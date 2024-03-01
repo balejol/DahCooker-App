@@ -25,8 +25,7 @@ import android.widget.Toast;
 
 import com.example.foodapplication.MainActivity;
 import com.example.foodapplication.R;
-import com.example.foodapplication.ui.login.LoginViewModel;
-import com.example.foodapplication.ui.login.LoginViewModelFactory;
+import com.example.foodapplication.RegisterActivity;
 import com.example.foodapplication.databinding.ActivityLoginBinding;
 
 import java.util.Objects;
@@ -38,11 +37,12 @@ public class LoginActivity extends AppCompatActivity {
 
     //mano :)
     Button _BackButton;
-    TextView textView3;
+    TextView _textView3;
+    Button registerButton;
 
     private boolean isDataValid(String name, String password) {
 
-        if (Objects.equals(name, "aa") && Objects.equals(password, "bb"))
+        if (Objects.equals(name, "aa") && Objects.equals(password, "password"))
         {
             return true;
         }
@@ -74,26 +74,15 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
 
-                //loginButton.setEnabled(isDataValid(usernameEditText.getText().toString(),
-                //        passwordEditText.getText().toString()));
-
-               // textView3.setVisibility(View.INVISIBLE);
-
-                if(isDataValid(usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString()))
-                {
-                    Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                    startActivity(intent);
-                }
-                else
-                {
-                    textView3.setVisibility(View.VISIBLE);
-
-                }
+                loginButton.setEnabled(isDataValid(usernameEditText.getText().toString(),
+                        passwordEditText.getText().toString()));
 
 
 
-                /*
+
+
+
+
 
                 loginButton.setEnabled(loginFormState.isDataValid());
 
@@ -105,10 +94,11 @@ public class LoginActivity extends AppCompatActivity {
                     passwordEditText.setError(getString(loginFormState.getPasswordError()));
                 }
 
-                 */
+
             }
         });
 
+        /*
         loginViewModel.getLoginResult().observe(this, new Observer<LoginResult>() {
             @Override
             public void onChanged(@Nullable LoginResult loginResult) {
@@ -128,6 +118,8 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+         */
 
         TextWatcher afterTextChangedListener = new TextWatcher() {
             @Override
@@ -163,14 +155,37 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadingProgressBar.setVisibility(View.VISIBLE);
+                //loadingProgressBar.setVisibility(View.VISIBLE);
+
+                //textView3.setVisibility(View.VISIBLE);
+
+
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
+
+                if(isDataValid(usernameEditText.getText().toString(),
+                        passwordEditText.getText().toString()))
+                {
+                    Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                    startActivity(intent);
+                }
+                else
+                {
+                    _textView3 = findViewById(R.id.textView3);
+
+                    _textView3.setVisibility(View.VISIBLE);
+
+                }
+
+
+
+
             }
         });
 
         //mano
 
+        //textView3.setVisibility(View.INVISIBLE);
         _BackButton = (Button) findViewById(R.id.BackButton);
 
         _BackButton.setOnClickListener(new View.OnClickListener() {
@@ -180,15 +195,29 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
 
+        registerButton = (Button) findViewById(R.id.registerButton);
+
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getBaseContext(), RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+/*
     private void updateUiWithUser(LoggedInUserView model) {
         String welcome = getString(R.string.welcome) + model.getDisplayName();
         // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
     }
 
+
+
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
+
+ */
 }
