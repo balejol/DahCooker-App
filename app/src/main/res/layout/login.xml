@@ -234,6 +234,15 @@
 
 				</RelativeLayout>
 
+				<TextView
+					android:id="@+id/textView3"
+					android:layout_width="240dp"
+					android:layout_height="164dp"
+					android:text="Incorrect username or password"
+					android:textColor="#FF0000"
+					android:textSize="34sp"
+					android:visibility="invisible" />
+
 			</RelativeLayout>
 		</RelativeLayout>
 
