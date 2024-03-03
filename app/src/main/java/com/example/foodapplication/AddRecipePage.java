@@ -78,7 +78,8 @@ public class AddRecipePage extends AppCompatActivity {
     {
         @Override
         public void onClick(View v) {
-            LinearLayout ingredientLayout = (LinearLayout) findViewById(R.id.ingredientLayout);
+            LinearLayout ingredientLayout = (LinearLayout)
+                    findViewById(R.id.ingredientLayout);
             EditText ingredient = new EditText(getBaseContext());
             id = id + 1;
             ingredient.setId(id);

@@ -32,10 +32,10 @@ public class RecipesPage extends AppCompatActivity
 
         for(int i = 0; i < RecipesList.GetN(); i++) {
             TextView recipeTitle = new TextView(this);
-            recipeTitle.setText("RECEPTAS - " + RecipesList.GetName(i));
+            recipeTitle.setText("RECIPE - " + RecipesList.GetName(i));
             recipeTitle.setGravity(Gravity.CENTER);
             recipeLayout.addView(recipeTitle);
-            Log.i("vardas", RecipesList.GetRecipe(i).GetIngredient(0));
+
             for (int j = 0; j < RecipesList.GetRecipe(i).GetAmountOfIngredients(); j++)
             {
                 TextView ingredients = new TextView(this);
