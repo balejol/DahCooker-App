@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class RecipesPage extends AppCompatActivity
 {
     Button _button;
+    Button backButton;
 
     //Receptų sąrašas
     public static Recipes RecipesList = new Recipes();
@@ -27,6 +28,7 @@ public class RecipesPage extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipes);
         _button = (Button) findViewById(R.id.button);
+        backButton = (Button) findViewById(R.id.backButtonRecipes);
 
         LinearLayout recipeLayout = (LinearLayout) findViewById(R.id.linearLayout);
 
@@ -44,6 +46,16 @@ public class RecipesPage extends AppCompatActivity
                 recipeLayout.addView(ingredients);
             }
         }
+
+        backButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         _button.setOnClickListener(new View.OnClickListener()
         {
