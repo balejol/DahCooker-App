@@ -34,6 +34,12 @@
             </intent-filter>
         </activity>
 
+        <!-- IngredientsActivity -->
+        <activity
+            android:name=".IngredientsActivity"
+            android:exported="true">
+        </activity>
+
     </application>
 
 </manifest>
