@@ -68,7 +68,8 @@ public class AddRecipePage extends AppCompatActivity {
         @Override
         public void onClick(View view)
         {
-            RecipesList.Remove(RecipesList.GetN() - 1);
+            if(RecipesList.GetN() != 0)
+                RecipesList.Remove(RecipesList.GetN() - 1);
             Intent intent = new Intent(getBaseContext(), RecipesPage.class);
             startActivity(intent);
         }
