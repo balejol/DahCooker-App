@@ -23,5 +23,21 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // Find the "Ingredients" button by its ID
+        Button buttonIngredients = findViewById(R.id.button_ingredients);
+
+        // Set an OnClickListener to the button
+        buttonIngredients.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an Intent to navigate to IngredientsActivity
+                Intent intent = new Intent(MainActivity.this, IngredientsActivity.class);
+                // Start IngredientsActivity
+                startActivity(intent);
+            }
+        });
+
+
     }
 }
