@@ -109,18 +109,31 @@ public class LoginActivity extends Activity {
 				}
 			}
 
-
 		});
-
+		rectangle_34.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Intent intent = new Intent(getBaseContext(), RegistrationActivity.class);
+				startActivity(intent);
+			}
+		});
 	}
 
 	private boolean isDataValid(String name, String password) {
 
-		if (Objects.equals(name, "aa") && Objects.equals(password, "password"))
-		{
-			return true;
+	//	if (Objects.equals(name, "aa") && Objects.equals(password, "password"))
+		//{
+	//		return true;
+	//	}
+	//	return false;
+
+		for (User user : RegistrationActivity.userList) {
+			if (user.getUserName().equals(name) && user.getPassword().equals(password)) {
+				return true;
+			}
 		}
 		return false;
+
 	}
 }
 	
