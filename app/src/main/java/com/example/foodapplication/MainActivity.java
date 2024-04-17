@@ -30,5 +30,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button recipeHistory = findViewById(R.id.recipeHistory); // Find the "recipeHistory" button by its ID
+
+        recipeHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, RecipeHistoryActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
