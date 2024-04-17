@@ -21,11 +21,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.ImageView;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.Objects;
 
 public class LoginActivity extends Activity {
 
@@ -69,11 +64,11 @@ public class LoginActivity extends Activity {
 		forgot_password_ = (TextView) findViewById(R.id.forgot_password_);
 		_bg__sign_up_button_ek1 = (View) findViewById(R.id._bg__sign_up_button_ek1);
 		rectangle_34 = (View) findViewById(R.id.rectangle_34);
-		_bg__sign_in_button_ek1 = (View) findViewById(R.id._bg__sign_in_button_ek1);
+		_bg__sign_in_button_ek1 = (View) findViewById(R.id._bg__sign_up_button_ek1);
 		rectangle_27 = (View) findViewById(R.id.rectangle_27);
-		write_password = (EditText) findViewById(R.id.write_password);
+		write_password = (EditText) findViewById(R.id.write_email);
 		ellipse_4 = (View) findViewById(R.id.ellipse_4);
-		password_ek2 = (TextView) findViewById(R.id.password_ek2);
+		password_ek2 = (TextView) findViewById(R.id.password);
 		write_username = (EditText) findViewById(R.id.write_username);
 		ellipse_2 = (View) findViewById(R.id.ellipse_2);
 		username_ek2 = (TextView) findViewById(R.id.username_ek2);

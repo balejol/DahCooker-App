@@ -128,7 +128,7 @@
 						android:layout_marginTop="259dp">
 
 						<View
-							android:id="@+id/_bg__sign_in_button_ek1"
+							android:id="@+id/_bg__sign_up_button_ek1"
 							android:layout_width="207dp"
 							android:layout_height="38dp"
 							android:layout_marginStart="-80dp"
@@ -156,7 +156,7 @@
 						>
 
 						<EditText
-							android:id="@+id/write_password"
+							android:id="@+id/write_email"
 							android:layout_width="206dp"
 							android:layout_height="38dp"
 							android:layout_marginStart="39dp"
@@ -173,7 +173,7 @@
 							android:background="@drawable/ellipse_4_shape" />
 
 						<TextView
-							android:id="@+id/password_ek2"
+							android:id="@+id/password"
 							android:layout_width="135.3dp"
 							android:layout_height="19.3dp"
 							android:layout_marginLeft="39dp"
