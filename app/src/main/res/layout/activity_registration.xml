@@ -8,14 +8,14 @@
 
 
     <RelativeLayout
-        android:id="@+id/page_login_ek1"
+        android:id="@+id/page_reg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp">
 
         <View
-            android:id="@+id/_bg__login_ek2"
+            android:id="@+id/bg_reg"
             android:layout_width="500dp"
             android:layout_height="800dp"
             android:layout_marginStart="0dp"
@@ -31,10 +31,10 @@
             android:background="@drawable/top_shape" />
 
         <TextView
-            android:id="@+id/__app_name_"
+            android:id="@+id/title_reg"
             android:layout_width="417dp"
             android:layout_height="89dp"
-            android:layout_gravity="center_horizontal|center"
+            android:layout_gravity="center_horizontal"
             android:layout_marginLeft="-5dp"
             android:layout_marginTop="79dp"
             android:gravity="center"
@@ -45,7 +45,7 @@
 
 
         <RelativeLayout
-            android:id="@+id/login_box"
+            android:id="@+id/reg_box"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="45dp"
@@ -53,7 +53,7 @@
             android:gravity="center">
 
             <View
-                android:id="@+id/login_box_ek2"
+                android:id="@+id/reg_box"
                 android:layout_width="308dp"
                 android:layout_height="501dp"
                 android:layout_marginStart="0dp"
@@ -62,7 +62,7 @@
 
 
             <RelativeLayout
-                android:id="@+id/sign_in_button"
+                android:id="@+id/sign_up_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="60dp"
@@ -77,7 +77,7 @@
                     android:background="@drawable/_bg__sign_in_button_ek1_shape" />
 
                 <Button
-                    android:id="@+id/rectangle_27"
+                    android:id="@+id/rectangle_signup"
                     android:layout_width="207dp"
                     android:layout_height="38dp"
                     android:layout_marginStart="0dp"
@@ -88,7 +88,7 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/password"
+                android:id="@+id/password_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="38dp"
@@ -112,7 +112,7 @@
                     android:background="@drawable/ellipse_4_shape" />
 
                 <TextView
-                    android:id="@+id/password"
+                    android:id="@+id/password_text"
                     android:layout_width="135.3dp"
                     android:layout_height="19.3dp"
                     android:layout_marginLeft="39dp"
@@ -126,7 +126,7 @@
 
 
             <RelativeLayout
-                android:id="@+id/idEdtEmail"
+                android:id="@+id/email_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="38dp"
@@ -139,10 +139,10 @@
                     android:layout_marginStart="39dp"
                     android:layout_marginTop="15dp"
                     android:background="@drawable/write_password_shape"
-                    android:inputType="textPassword" />
+                    android:inputType="textEmailAddress" />
 
                 <View
-                    android:id="@+id/ellipse_4"
+                    android:id="@+id/ellipse_4_email"
                     android:layout_width="33dp"
                     android:layout_height="33dp"
                     android:layout_marginStart="0dp"
@@ -150,7 +150,7 @@
                     android:background="@drawable/ellipse_4_shape" />
 
                 <TextView
-                    android:id="@+id/email"
+                    android:id="@+id/email_text"
                     android:layout_width="135.3dp"
                     android:layout_height="19.3dp"
                     android:layout_marginLeft="39dp"
@@ -164,7 +164,7 @@
 
 
             <RelativeLayout
-                android:id="@+id/idEdtUserName"
+                android:id="@+id/username_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="38dp"
@@ -187,7 +187,7 @@
                     android:background="@drawable/ellipse_2_shape" />
 
                 <TextView
-                    android:id="@+id/username_ek2"
+                    android:id="@+id/username_text"
                     android:layout_width="135.3dp"
                     android:layout_height="19.3dp"
                     android:layout_marginLeft="39dp"
@@ -198,34 +198,6 @@
                     android:textStyle="bold" />
 
             </RelativeLayout>
-
-            <TextView
-                android:id="@+id/welcome_"
-                android:layout_width="208dp"
-                android:layout_height="55.5dp"
-                android:layout_gravity="center_horizontal|center"
-                android:layout_marginLeft="56dp"
-                android:layout_marginTop="12dp"
-                android:gravity="center"
-                android:text="@string/welcome__string"
-                android:textColor="@color/_bg__login_box_ek1_color"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:visibility="invisible" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="160dp"
-                android:layout_height="45dp"
-                android:layout_gravity="center_horizontal|center"
-                android:layout_marginLeft="80dp"
-                android:layout_marginTop="60dp"
-                android:text="Incorrect username or password!"
-                android:textAlignment="center"
-                android:textColor="#FF0000"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:visibility="invisible" />
 
         </RelativeLayout>
 
