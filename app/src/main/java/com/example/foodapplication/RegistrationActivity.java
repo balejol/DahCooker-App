@@ -24,10 +24,10 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-        userNameEdt = findViewById(R.id.idEdtUserName);
-        emailEdt = findViewById(R.id.idEdtEmail);
-        passwordEdt = findViewById(R.id.idEdtPassword);
-        registerBtn = findViewById(R.id.idBtnRegister);
+        userNameEdt = findViewById(R.id.write_username);
+        emailEdt = findViewById(R.id.write_email);
+        passwordEdt = findViewById(R.id.write_password);
+        registerBtn = findViewById(R.id.rectangle_27);
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
