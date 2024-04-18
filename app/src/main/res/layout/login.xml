@@ -4,7 +4,7 @@
 	android:layout_height="match_parent">
 
 	<ScrollView
-		android:id="@+id/login"
+		android:id="@+id/login_page"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
 
@@ -15,19 +15,21 @@
 
 
 			<RelativeLayout
-				android:id="@+id/page_login_ek1"
+				android:id="@+id/page_login_cont"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_marginStart="0dp"
-				android:layout_marginTop="0dp">
+				android:layout_marginTop="0dp"
+				android:visibility="visible">
 
 				<View
-					android:id="@+id/_bg__login_ek2"
+					android:id="@+id/_bg_nude"
 					android:layout_width="500dp"
 					android:layout_height="800dp"
 					android:layout_marginStart="0dp"
 					android:layout_marginTop="0dp"
-					android:background="@drawable/_bg__login_ek2_shape" />
+					android:background="@drawable/_bg_color_nude"
+					android:visibility="visible" />
 
 				<View
 					android:id="@+id/top"
@@ -38,7 +40,7 @@
 					android:background="@drawable/top_shape" />
 
 				<TextView
-					android:id="@+id/__app_name_"
+					android:id="@+id/_app_name"
 					android:layout_width="417dp"
 					android:layout_height="89dp"
 					android:layout_gravity="center_horizontal|center"
@@ -60,12 +62,12 @@
 					android:gravity="center">
 
 					<View
-						android:id="@+id/login_box_ek2"
+						android:id="@+id/login_box_green"
 						android:layout_width="320dp"
 						android:layout_height="379dp"
 						android:layout_marginStart="0dp"
 						android:layout_marginTop="0dp"
-						android:background="@drawable/login_box_ek2_shape" />
+						android:background="@drawable/box_shape_yellow" />
 
 					<TextView
 						android:id="@+id/forgot_password_"
@@ -91,16 +93,15 @@
 							android:layout_width="140dp"
 							android:layout_height="33dp"
 							android:layout_marginStart="-113dp"
-							android:layout_marginTop="-530dp"
-							android:background="@drawable/_bg__sign_up_button_ek1_shape" />
+							android:layout_marginTop="-530dp" />
 
 						<Button
-							android:id="@+id/rectangle_34"
+							android:id="@+id/rectangle_up"
 							android:layout_width="140dp"
 							android:layout_height="32.15dp"
 							android:layout_marginStart="0dp"
 							android:layout_marginTop="1dp"
-							android:background="@drawable/rectangle_34_shape"
+							android:background="@drawable/rectangle_shape"
 							android:text="@string/sign_up_string" />
 
 					</RelativeLayout>
@@ -118,16 +119,15 @@
 							android:layout_width="207dp"
 							android:layout_height="38dp"
 							android:layout_marginStart="-80dp"
-							android:layout_marginTop="-475dp"
-							android:background="@drawable/_bg__sign_in_button_ek1_shape" />
+							android:layout_marginTop="-475dp" />
 
 						<Button
-							android:id="@+id/rectangle_27"
+							android:id="@+id/rectangle_in"
 							android:layout_width="207dp"
 							android:layout_height="38dp"
 							android:layout_marginStart="0dp"
 							android:layout_marginTop="0dp"
-							android:background="@drawable/rectangle_27_shape"
+							android:background="@drawable/rectangle_shape"
 							android:text="@string/sign_in_string" />
 
 					</RelativeLayout>
@@ -141,21 +141,21 @@
 						android:layout_marginTop="166dp">
 
 						<EditText
-							android:id="@+id/write_email"
+							android:id="@+id/write_password"
 							android:layout_width="206dp"
 							android:layout_height="38dp"
 							android:layout_marginStart="39dp"
 							android:layout_marginTop="15dp"
-							android:background="@drawable/write_password_shape"
-							android:inputType="textPassword"/>
+							android:background="@drawable/write_shape_white"
+							android:inputType="textPassword" />
 
 						<View
-							android:id="@+id/ellipse_4"
+							android:id="@+id/ellipse1"
 							android:layout_width="33dp"
 							android:layout_height="33dp"
 							android:layout_marginStart="0dp"
 							android:layout_marginTop="18dp"
-							android:background="@drawable/ellipse_4_shape" />
+							android:background="@drawable/ellipse_shape" />
 
 						<TextView
 							android:id="@+id/password_text"
@@ -184,15 +184,15 @@
 							android:layout_height="38dp"
 							android:layout_marginStart="39dp"
 							android:layout_marginTop="15dp"
-							android:background="@drawable/write_username_shape" />
+							android:background="@drawable/write_shape_white" />
 
 						<View
-							android:id="@+id/ellipse_2"
+							android:id="@+id/ellipse1.2"
 							android:layout_width="33dp"
 							android:layout_height="33dp"
 							android:layout_marginStart="0dp"
 							android:layout_marginTop="15dp"
-							android:background="@drawable/ellipse_2_shape" />
+							android:background="@drawable/ellipse_shape" />
 
 						<TextView
 							android:id="@+id/username_text"

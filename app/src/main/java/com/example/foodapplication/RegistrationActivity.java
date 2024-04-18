@@ -25,9 +25,9 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         userNameEdt = findViewById(R.id.write_username);
-        emailEdt = findViewById(R.id.write_email);
+        emailEdt = findViewById(R.id.write_mail);
         passwordEdt = findViewById(R.id.write_password);
-        registerBtn = findViewById(R.id.rectangle_27);
+        registerBtn = findViewById(R.id.rectangle_in);
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

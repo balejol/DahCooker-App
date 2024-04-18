@@ -1,207 +1,205 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-
-    <RelativeLayout
-        android:id="@+id/page_reg"
+    <ScrollView
+        android:id="@+id/reg_page"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp">
-
-        <View
-            android:id="@+id/bg_reg"
-            android:layout_width="500dp"
-            android:layout_height="800dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
-            android:background="@drawable/_bg__login_ek2_shape" />
-
-        <View
-            android:id="@+id/top"
-            android:layout_width="500dp"
-            android:layout_height="570dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="-116dp"
-            android:background="@drawable/top_shape" />
-
-        <TextView
-            android:id="@+id/title_reg"
-            android:layout_width="417dp"
-            android:layout_height="89dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="-5dp"
-            android:layout_marginTop="79dp"
-            android:gravity="center"
-            android:text="Registration"
-            android:textColor="@color/__app_name__color"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-
+        android:layout_height="match_parent">
 
         <RelativeLayout
-            android:id="@+id/box_reg_box"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="45dp"
-            android:layout_marginTop="216dp"
-            android:gravity="center">
+            android:id="@+id/content_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <View
-                android:id="@+id/reg_box"
-                android:layout_width="308dp"
-                android:layout_height="501dp"
+
+            <RelativeLayout
+                android:id="@+id/page_reg_cont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="0dp"
-                android:background="@drawable/login_box_ek2_shape" />
-
-
-            <RelativeLayout
-                android:id="@+id/sign_up_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:layout_marginTop="400dp">
+                android:visibility="visible">
 
                 <View
-                    android:id="@+id/_bg__sign_up_button_ek1"
-                    android:layout_width="207dp"
-                    android:layout_height="38dp"
-                    android:layout_marginStart="-80dp"
-                    android:layout_marginTop="-475dp"
-                    android:background="@drawable/_bg__sign_in_button_ek1_shape" />
-
-                <Button
-                    android:id="@+id/rectangle_signup"
-                    android:layout_width="207dp"
-                    android:layout_height="38dp"
+                    android:id="@+id/_bg_nude"
+                    android:layout_width="500dp"
+                    android:layout_height="800dp"
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="0dp"
-                    android:background="@drawable/rectangle_27_shape"
-                    android:text="@string/sign_up_string" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/password_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="38dp"
-                android:layout_marginTop="250dp">
-
-                <EditText
-                    android:id="@+id/write_password"
-                    android:layout_width="206dp"
-                    android:layout_height="38dp"
-                    android:layout_marginStart="39dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/write_password_shape"
-                    android:inputType="textPassword" />
+                    android:background="@drawable/_bg_color_nude"
+                    android:visibility="visible" />
 
                 <View
-                    android:id="@+id/ellipse_4"
-                    android:layout_width="33dp"
-                    android:layout_height="33dp"
+                    android:id="@+id/top"
+                    android:layout_width="500dp"
+                    android:layout_height="570dp"
                     android:layout_marginStart="0dp"
-                    android:layout_marginTop="18dp"
-                    android:background="@drawable/ellipse_4_shape" />
+                    android:layout_marginTop="-116dp"
+                    android:background="@drawable/top_shape" />
 
-                <TextView
-                    android:id="@+id/password_text"
-                    android:layout_width="135.3dp"
-                    android:layout_height="19.3dp"
-                    android:layout_marginLeft="39dp"
-                    android:layout_marginTop="0dp"
-                    android:text="@string/password_ek2_string"
-                    android:textColor="@color/forgot_password__color"
-                    android:textSize="13sp"
-                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:id="@+id/reg_box"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="45dp"
+                    android:layout_marginTop="216dp"
+                    android:gravity="center">
+
+                    <View
+                        android:id="@+id/reg_box_green"
+                        android:layout_width="320dp"
+                        android:layout_height="450dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="0dp"
+                        android:background="@drawable/box_shape_yellow" />
+
+
+                    <RelativeLayout
+                        android:id="@+id/sign_up_reg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="360dp"
+                        android:visibility="visible">
+
+                        <View
+                            android:id="@+id/_bg__sign_in_button_ek1"
+                            android:layout_width="207dp"
+                            android:layout_height="38dp"
+                            android:layout_marginStart="-80dp"
+                            android:layout_marginTop="-475dp" />
+
+                        <Button
+                            android:id="@+id/rectangle_in"
+                            android:layout_width="207dp"
+                            android:layout_height="38dp"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="0dp"
+                            android:background="@drawable/rectangle_shape"
+                            android:text="@string/sign_in_string" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="38dp"
+                        android:layout_marginTop="250dp">
+
+                        <EditText
+                            android:id="@+id/write_pass"
+                            android:layout_width="206dp"
+                            android:layout_height="38dp"
+                            android:layout_marginStart="39dp"
+                            android:layout_marginTop="15dp"
+                            android:background="@drawable/write_shape_white"
+                            android:inputType="textPassword" />
+
+                        <View
+                            android:id="@+id/ellipse2"
+                            android:layout_width="33dp"
+                            android:layout_height="33dp"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="18dp"
+                            android:background="@drawable/ellipse_shape" />
+
+                        <TextView
+                            android:id="@+id/password_text"
+                            android:layout_width="135.3dp"
+                            android:layout_height="19.3dp"
+                            android:layout_marginLeft="39dp"
+                            android:layout_marginTop="0dp"
+                            android:text="@string/password_ek2_string"
+                            android:textColor="@color/forgot_password__color"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="38dp"
+                        android:layout_marginTop="175dp">
+
+                        <EditText
+                            android:id="@+id/write_mail"
+                            android:layout_width="206dp"
+                            android:layout_height="38dp"
+                            android:layout_marginStart="39dp"
+                            android:layout_marginTop="15dp"
+                            android:background="@drawable/write_shape_white"
+                            android:inputType="textPassword" />
+
+                        <View
+                            android:id="@+id/ellipse2.1"
+                            android:layout_width="33dp"
+                            android:layout_height="33dp"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="18dp"
+                            android:background="@drawable/ellipse_shape" />
+
+                        <TextView
+                            android:id="@+id/email_text"
+                            android:layout_width="135.3dp"
+                            android:layout_height="19.3dp"
+                            android:layout_marginLeft="39dp"
+                            android:layout_marginTop="0dp"
+                            android:text="@string/password_ek2_string"
+                            android:textColor="@color/forgot_password__color"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="38dp"
+                        android:layout_marginTop="96dp">
+
+                        <EditText
+                            android:id="@+id/write_username"
+                            android:layout_width="206dp"
+                            android:layout_height="38dp"
+                            android:layout_marginStart="39dp"
+                            android:layout_marginTop="15dp"
+                            android:background="@drawable/write_shape_white" />
+
+                        <View
+                            android:id="@+id/ellipse2.2"
+                            android:layout_width="33dp"
+                            android:layout_height="33dp"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="15dp"
+                            android:background="@drawable/ellipse_shape" />
+
+                        <TextView
+                            android:id="@+id/username_text"
+                            android:layout_width="135.3dp"
+                            android:layout_height="19.3dp"
+                            android:layout_marginLeft="39dp"
+                            android:layout_marginTop="0dp"
+                            android:text="@string/username_ek2_string"
+                            android:textColor="@color/forgot_password__color"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
 
             </RelativeLayout>
-
-
-            <RelativeLayout
-                android:id="@+id/email_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="38dp"
-                android:layout_marginTop="170dp">
-
-                <EditText
-                    android:id="@+id/write_email"
-                    android:layout_width="206dp"
-                    android:layout_height="38dp"
-                    android:layout_marginStart="39dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/write_password_shape"
-                    android:inputType="textEmailAddress" />
-
-                <View
-                    android:id="@+id/ellipse_4_email"
-                    android:layout_width="33dp"
-                    android:layout_height="33dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginTop="18dp"
-                    android:background="@drawable/ellipse_4_shape" />
-
-                <TextView
-                    android:id="@+id/email_text"
-                    android:layout_width="135.3dp"
-                    android:layout_height="19.3dp"
-                    android:layout_marginLeft="39dp"
-                    android:layout_marginTop="0dp"
-                    android:text="E-mail"
-                    android:textColor="@color/forgot_password__color"
-                    android:textSize="13sp"
-                    android:textStyle="bold" />
-
-            </RelativeLayout>
-
-
-            <RelativeLayout
-                android:id="@+id/username_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="38dp"
-                android:layout_marginTop="96dp">
-
-                <EditText
-                    android:id="@+id/write_username"
-                    android:layout_width="206dp"
-                    android:layout_height="38dp"
-                    android:layout_marginStart="39dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/write_username_shape" />
-
-                <View
-                    android:id="@+id/ellipse_2"
-                    android:layout_width="33dp"
-                    android:layout_height="33dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/ellipse_2_shape" />
-
-                <TextView
-                    android:id="@+id/username_text"
-                    android:layout_width="135.3dp"
-                    android:layout_height="19.3dp"
-                    android:layout_marginLeft="39dp"
-                    android:layout_marginTop="0dp"
-                    android:text="@string/username_ek2_string"
-                    android:textColor="@color/forgot_password__color"
-                    android:textSize="13sp"
-                    android:textStyle="bold" />
-
-            </RelativeLayout>
-
         </RelativeLayout>
 
-    </RelativeLayout>
-
-
-</RelativeLayout>
+    </ScrollView>
+</HorizontalScrollView>
