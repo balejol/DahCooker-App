@@ -2,21 +2,7 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
-	<!--
-    /*
-     *	This content is generated from the API File Info.
-     *	(Alt+Shift+Ctrl+I).
-     *
-     *	@desc
-     *	@file 		login
-     *	@date 		Sunday 03rd of March 2024 01:01:19 PM
-     *	@title 		Page 1
-     *	@author
-     *	@keywords
-     *	@generator 	Export Kit v1.3.figma
-     *
-     */
-    -->
+
 	<ScrollView
 		android:id="@+id/login"
 		android:layout_width="match_parent"
@@ -24,14 +10,14 @@
 
 		<RelativeLayout
 			android:id="@+id/content_container"
-			android:layout_width="wrap_content"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content">
 
 
 			<RelativeLayout
 				android:id="@+id/page_login_ek1"
 				android:layout_width="match_parent"
-				android:layout_height="match_parent"
+				android:layout_height="wrap_content"
 				android:layout_marginStart="0dp"
 				android:layout_marginTop="0dp">
 
@@ -128,7 +114,7 @@
 						android:layout_marginTop="259dp">
 
 						<View
-							android:id="@+id/_bg__sign_up_button_ek1"
+							android:id="@+id/_bg__sign_in_button_ek1"
 							android:layout_width="207dp"
 							android:layout_height="38dp"
 							android:layout_marginStart="-80dp"
@@ -152,8 +138,7 @@
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginStart="38dp"
-						android:layout_marginTop="166dp"
-						>
+						android:layout_marginTop="166dp">
 
 						<EditText
 							android:id="@+id/write_email"
@@ -173,7 +158,7 @@
 							android:background="@drawable/ellipse_4_shape" />
 
 						<TextView
-							android:id="@+id/password"
+							android:id="@+id/password_text"
 							android:layout_width="135.3dp"
 							android:layout_height="19.3dp"
 							android:layout_marginLeft="39dp"
@@ -210,7 +195,7 @@
 							android:background="@drawable/ellipse_2_shape" />
 
 						<TextView
-							android:id="@+id/username_ek2"
+							android:id="@+id/username_text"
 							android:layout_width="135.3dp"
 							android:layout_height="19.3dp"
 							android:layout_marginLeft="39dp"
@@ -236,13 +221,13 @@
 						android:textStyle="bold" />
 
 					<TextView
-						android:id="@+id/textView3"
+						android:id="@+id/error_message"
 						android:layout_width="160dp"
 						android:layout_height="45dp"
 						android:layout_gravity="center_horizontal|center"
 						android:layout_marginLeft="80dp"
 						android:layout_marginTop="60dp"
-						android:text="Incorrect username or password!"
+						android:text="@string/error_message_string"
 						android:textAlignment="center"
 						android:textColor="#FF0000"
 						android:textSize="16sp"

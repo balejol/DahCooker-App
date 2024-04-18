@@ -1,29 +1,13 @@
 package com.example.foodapplication;
-/*
- *	This content is generated from the API File Info.
- *	(Alt+Shift+Ctrl+I).
- *
- *	@desc
- *	@file 		login
- *	@date 		Sunday 03rd of March 2024 01:01:19 PM
- *	@title 		Page 1
- *	@author
- *	@keywords
- *	@generator 	Export Kit v1.3.figma
- *
- */
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-
-
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 public class LoginActivity extends Activity {
-
 
 	private View _bg__login_ek2;
 	private View top;
@@ -51,60 +35,41 @@ public class LoginActivity extends Activity {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
 
-
-
-		_bg__login_ek2 = (View) findViewById(R.id._bg__login_ek2);
-		top = (View) findViewById(R.id.top);
-		__app_name_ = (TextView) findViewById(R.id.__app_name_);
-		login_box_ek2 = (View) findViewById(R.id.login_box_ek2);
-		forgot_password_ = (TextView) findViewById(R.id.forgot_password_);
-		_bg__sign_up_button_ek1 = (View) findViewById(R.id._bg__sign_up_button_ek1);
-		rectangle_34 = (View) findViewById(R.id.rectangle_34);
-		_bg__sign_in_button_ek1 = (View) findViewById(R.id._bg__sign_up_button_ek1);
-		rectangle_27 = (View) findViewById(R.id.rectangle_27);
-		write_password = (EditText) findViewById(R.id.write_email);
-		ellipse_4 = (View) findViewById(R.id.ellipse_4);
-		password_ek2 = (TextView) findViewById(R.id.password);
-		write_username = (EditText) findViewById(R.id.write_username);
-		ellipse_2 = (View) findViewById(R.id.ellipse_2);
-		username_ek2 = (TextView) findViewById(R.id.username_ek2);
-		welcome_ = (TextView) findViewById(R.id.welcome_);
-
-
-		//custom code goes here
-
+		_bg__login_ek2 = findViewById(R.id._bg__login_ek2);
+		top = findViewById(R.id.top);
+		__app_name_ = findViewById(R.id.__app_name_);
+		login_box_ek2 = findViewById(R.id.login_box_ek2);
+		forgot_password_ = findViewById(R.id.forgot_password_);
+		_bg__sign_up_button_ek1 = findViewById(R.id._bg__sign_up_button_ek1);
+		rectangle_34 = findViewById(R.id.rectangle_34);
+		_bg__sign_in_button_ek1 = findViewById(R.id._bg__sign_in_button_ek1);
+		rectangle_27 = findViewById(R.id.rectangle_27);
+		write_password = findViewById(R.id.write_password); // Corrected ID
+		ellipse_4 = findViewById(R.id.ellipse_4);
+		write_username = findViewById(R.id.write_username);
+		ellipse_2 = findViewById(R.id.ellipse_2);
+		welcome_ = findViewById(R.id.welcome_);
+		password_ek2 = findViewById(R.id.password); // Corrected ID
+		username_ek2 = findViewById(R.id.username); // Corrected ID
 
 		// Set onClickListener for rectangle_27
 		rectangle_27.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-
-				//if(isDataValid(write_username.toString(),
-				//		write_password.toString()))
-				if(isDataValid(write_username.getText().toString(),
-						write_password.getText().toString()))
-				{
+				if (isDataValid(write_username.getText().toString(),
+						write_password.getText().toString())) {
 					Intent intent = new Intent(getBaseContext(), MainActivity.class);
 					startActivity(intent);
-
-				}
-				else
-				{
+				} else {
 					_textView3 = findViewById(R.id.textView3);
-
-					//_textView3.setText(write_username.getText().toString());
-
 					_textView3.setVisibility(View.VISIBLE);
-
-
 				}
 			}
-
 		});
+
 		rectangle_34.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -115,21 +80,11 @@ public class LoginActivity extends Activity {
 	}
 
 	private boolean isDataValid(String name, String password) {
-
-	//	if (Objects.equals(name, "aa") && Objects.equals(password, "password"))
-		//{
-	//		return true;
-	//	}
-	//	return false;
-
 		for (User user : RegistrationActivity.userList) {
 			if (user.getUserName().equals(name) && user.getPassword().equals(password)) {
 				return true;
 			}
 		}
 		return false;
-
 	}
 }
-	
-	
