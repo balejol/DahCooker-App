@@ -13,10 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodApplication"
         tools:targetApi="31">
+
+        <service android:name=".MusicService" />
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
         <activity
             android:name=".RecipeHistoryActivity"
-            android:exported="false" />
-        <!-- MainActivity -->
+            android:exported="false" /> <!-- MainActivity -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -37,10 +41,10 @@
         </activity> <!-- IngredientsActivity -->
         <activity
             android:name=".IngredientsActivity"
-            android:exported="true"></activity> <!-- RecipeActivity -->
+            android:exported="true" /> <!-- RecipeActivity -->
         <activity
             android:name=".AddRecipePage"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".RecipesPage"
             android:exported="true">
