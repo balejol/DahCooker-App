@@ -6,16 +6,168 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ScrollView
+        android:id="@+id/main_page"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/content_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!
+            Reikia padaryti, kad Ingredients butu ant to mygtuko D:
+            irmygtuka auksciau padaryti
+            -->
+            <RelativeLayout
+                android:id="@+id/page_mainpage_cont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:visibility="visible">
+
+                <View
+                    android:id="@+id/_bg_nude"
+                    android:layout_width="500dp"
+                    android:layout_height="800dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:background="@drawable/_bg_color_nude"
+                    android:visibility="visible" />
+
+                <View
+                    android:id="@+id/top"
+                    android:layout_width="match_parent"
+                    android:layout_height="292dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="-116dp"
+                    android:background="@drawable/top_shape" />
+
+
+                <TextView
+                    android:id="@+id/app_name"
+                    android:layout_width="230dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center_horizontal|center"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="Really cool name of the app"
+                    android:textColor="@color/__app_name__color"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!
+                Reikia padaryti, kad butu po rudu top ir per vidury
+                -->
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="230dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="We recommend"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:id="@+id/login_box"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="45dp"
+                    android:layout_marginTop="216dp"
+                    android:gravity="center"
+                    android:visibility="visible">
+
+                    <View
+                        android:id="@+id/login_box_green"
+                        android:layout_width="320dp"
+                        android:layout_height="379dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="0dp"
+                        android:background="@drawable/box_shape_yellow" />
+
+
+                    <RelativeLayout
+                        android:id="@+id/sign_up_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="93dp"
+                        android:layout_marginTop="314dp"
+                        android:visibility="gone">
+
+                        <View
+                            android:id="@+id/_bg__sign_up_button_ek1"
+                            android:layout_width="140dp"
+                            android:layout_height="33dp"
+                            android:layout_marginStart="-113dp"
+                            android:layout_marginTop="-530dp" />
+
+                        <Button
+                            android:id="@+id/rectangle_up"
+                            android:layout_width="140dp"
+                            android:layout_height="32.15dp"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="1dp"
+                            android:background="@drawable/rectangle_shape"
+                            android:text="@string/sign_up_string" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/ingredients_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="259dp">
+
+                        <TextView
+                            android:id="@+id/ingredients_text"
+                            android:layout_width="208dp"
+                            android:layout_height="55.5dp"
+                            android:layout_gravity="center_horizontal|top"
+                            android:layout_marginTop="12dp"
+                            android:gravity="center"
+                            android:text="Ingredients"
+                            android:textSize="25sp"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/rectangle_ing"
+                            android:layout_width="300dp"
+                            android:layout_height="90dp"
+                            android:layout_below="@id/ingredients_text"
+                            android:layout_marginTop="8dp"
+                            android:paddingTop="35dp"
+                            android:background="@drawable/rectangle_shape"
+                            android:text="Find what to cook based on the food you have" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </ScrollView>
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:text="Find out what to cook TODAY"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -47,20 +199,22 @@
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ingredients"
         android:layout_marginTop="58dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="Ingredients"
+        android:visibility="gone"
         app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Recipe"
         android:layout_marginTop="58dp"
-        app:layout_constraintStart_toEndOf="@+id/button1"
+        android:text="Add Recipe"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button1"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
