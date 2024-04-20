@@ -6,19 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".AddRecipePage">
 
-    <EditText
-        android:id="@+id/recipeNameTextField"
-        android:layout_width="wrap_content"
+    <View
+        android:id="@+id/_bg_nude"
+        android:layout_width="500dp"
+        android:layout_height="800dp"
+        android:background="@drawable/_bg_color_nude"
+        android:visibility="visible"
+        tools:ignore="MissingConstraints" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Recipe name"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.084" />
+        android:padding="16dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="49dp">
+
+        <EditText
+            android:id="@+id/recipeNameTextField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Recipe name"
+            android:inputType="text"
+            android:padding="12dp" />
+    </RelativeLayout>
 
     <Button
         android:id="@+id/createRecipeButton"
@@ -60,14 +71,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/box_shape_yellow" />
-
-        <View
-            android:id="@+id/_bg_nude"
-            android:layout_width="500dp"
-            android:layout_height="800dp"
-            android:background="@drawable/_bg_color_nude"
-            android:visibility="visible"
-            tools:ignore="MissingConstraints" />
     </LinearLayout>
 
     <Button
