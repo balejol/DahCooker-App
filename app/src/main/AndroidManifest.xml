@@ -15,6 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodApplication"
         tools:targetApi="31">
+
         <activity
             android:name=".Register"
             android:exported="false" />
@@ -26,7 +27,9 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- MainActivity -->
+        </activity>
+
+        <!-- MainActivity -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -35,31 +38,39 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- LoginActivity -->
+        </activity>
+
+        <!-- LoginActivity -->
         <activity
             android:name=".LoginActivity"
             android:exported="true">
-<!--            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        </activity>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
-        </activity> <!-- IngredientsActivity -->
+        <!-- RegistrationActivity -->
+        <activity
+            android:name=".RegistrationActivity"
+            android:exported="true">
+        </activity>
+
+        <!-- IngredientsActivity -->
         <activity
             android:name=".IngredientsActivity"
-            android:exported="true" /> <!-- RecipeActivity -->
+            android:exported="true" />
+
+        <!-- RecipeActivity -->
         <activity
             android:name=".AddRecipePage"
             android:exported="true" />
+
+        <!-- RecipePage -->
         <activity
             android:name=".RecipesPage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+    </application>
 </manifest>

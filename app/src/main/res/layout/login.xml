@@ -220,6 +220,7 @@
 						android:textSize="25sp"
 						android:textStyle="bold" />
 
+					<!-- Kur buvo android:text="@string/error_message_string" jis neveikia, tai dabar palikau android:text="Klaidele" -->
 					<TextView
 						android:id="@+id/error_message"
 						android:layout_width="160dp"
@@ -227,7 +228,7 @@
 						android:layout_gravity="center_horizontal|center"
 						android:layout_marginLeft="80dp"
 						android:layout_marginTop="60dp"
-						android:text="@string/error_message_string"
+						android:text="Klaidele"
 						android:textAlignment="center"
 						android:textColor="#FF0000"
 						android:textSize="16sp"
