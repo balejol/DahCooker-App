@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.foodapplication">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,38 +15,42 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodApplication"
         tools:targetApi="31">
+        <activity
+            android:name=".Register"
+            android:exported="false" />
+        <activity
+            android:name=".Login"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <!-- MainActivity -->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- MainActivity -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- LoginActivity -->
+        </activity> <!-- LoginActivity -->
         <activity
             android:name=".LoginActivity"
             android:exported="true">
-            <intent-filter>
+<!--            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
 
-        <!-- IngredientsActivity -->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity> <!-- IngredientsActivity -->
         <activity
             android:name=".IngredientsActivity"
-            android:exported="true">
-        </activity>
-
-        <!-- RecipeActivity -->
+            android:exported="true" /> <!-- RecipeActivity -->
         <activity
             android:name=".AddRecipePage"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".RecipesPage"
             android:exported="true">
@@ -54,7 +60,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
