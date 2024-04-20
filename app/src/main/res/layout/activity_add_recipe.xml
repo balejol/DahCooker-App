@@ -6,15 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".AddRecipePage">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <EditText
         android:id="@+id/recipeNameTextField"
         android:layout_width="wrap_content"
@@ -33,18 +24,18 @@
         android:id="@+id/createRecipeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_shape"
         android:text="Create new recipe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.797"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.957" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/cancelCreateRecipeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_shape"
         android:text="Cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,12 +53,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.313"></LinearLayout>
+        app:layout_constraintVertical_bias="0.313">
+
+        <View
+            android:id="@+id/recipe_box_green"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/box_shape_yellow" />
+
+        <View
+            android:id="@+id/_bg_nude"
+            android:layout_width="500dp"
+            android:layout_height="800dp"
+            android:background="@drawable/_bg_color_nude"
+            android:visibility="visible"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/addIngredient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_shape"
         android:text="+"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
