@@ -6,16 +6,168 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ScrollView
+        android:id="@+id/main_page"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/content_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/page_mainpage_cont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:visibility="visible">
+
+                <View
+                    android:id="@+id/_bg_nude"
+                    android:layout_width="500dp"
+                    android:layout_height="800dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:background="@drawable/_bg_color_nude"
+                    android:visibility="visible" />
+
+                <View
+                    android:id="@+id/top"
+                    android:layout_width="match_parent"
+                    android:layout_height="292dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="-116dp"
+                    android:background="@drawable/top_shape" />
+
+
+                <TextView
+                    android:id="@+id/app_name"
+                    android:layout_width="209dp"
+                    android:layout_height="105dp"
+                    android:layout_gravity="center_horizontal|center"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="Really cool name of the app"
+                    android:textColor="@color/__app_name__color"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:id="@+id/login_box"
+                    android:layout_width="321dp"
+                    android:layout_height="396dp"
+                    android:layout_below="@+id/top"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="45dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="45dp"
+                    android:gravity="center"
+                    android:visibility="visible">
+
+                    <View
+                        android:id="@+id/login_box_green"
+                        android:layout_width="400dp"
+                        android:layout_height="379dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="0dp"
+                        android:background="@drawable/box_shape_yellow" />
+
+
+                    <TextView
+                        android:id="@+id/text"
+                        android:layout_width="230dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="48dp"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginEnd="45dp"
+                        android:gravity="center"
+                        android:text="We recommend"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                    <!-- ADD RECIPE BUTTON -->
+                    <RelativeLayout
+                        android:id="@+id/addrec_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="93dp"
+                        android:layout_marginTop="314dp"
+                        android:layout_marginEnd="30dp">
+
+                        <Button
+                            android:id="@+id/add_recipe"
+                            android:layout_width="140dp"
+                            android:layout_height="42.15dp"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="1dp"
+                            android:background="@drawable/button_color"
+                            android:text="Add recipe" />
+                    </RelativeLayout>
+
+                    <!-- INGREDIENTS BUTTON -->
+                    <RelativeLayout
+                        android:id="@+id/ingr_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="171dp"
+                        android:layout_marginEnd="30dp">
+                        <Button
+                            android:id="@+id/ingredients"
+                            android:layout_width="400dp"
+                            android:layout_height="90dp"
+                            android:paddingTop="25dp"
+                            android:background="@drawable/button_color"
+                            android:text="Find what to cook based on the food you have" />
+                    </RelativeLayout>
+                    <TextView
+                        android:id="@+id/ingredients_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_gravity="center_horizontal|top"
+                        android:layout_marginTop="175dp"
+                        android:gravity="center"
+                        android:text="Ingredients"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:text="Find out what to cook TODAY"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -41,54 +193,6 @@
         android:layout_marginTop="664dp"
         android:text="Logout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ingredients"
-        android:layout_marginTop="58dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Recipe"
-        android:layout_marginTop="58dp"
-        app:layout_constraintStart_toEndOf="@+id/button1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/recipeHistory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="127dp"
-        android:layout_marginEnd="127dp"
-        android:layout_marginBottom="310dp"
-        android:rotationY="19"
-        android:text="Recipe History"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/settingsButton"
-        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:rotationY="-180"
-        android:text=""
-        app:icon="@android:drawable/ic_menu_preferences"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
