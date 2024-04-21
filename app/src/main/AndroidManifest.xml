@@ -3,8 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.foodapplication">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,18 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodApplication"
         tools:targetApi="31">
+
+        <service android:name=".MusicService" />
         <activity
-            android:name=".Register"
+            android:name=".SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".Login"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> <!-- MainActivity -->
+            android:name=".RecipeHistoryActivity"
+            android:exported="false" /> <!-- MainActivity -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -39,25 +33,21 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true">
-<!--            <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
         </activity> <!-- IngredientsActivity -->
         <activity
             android:name=".IngredientsActivity"
             android:exported="true" /> <!-- RecipeActivity -->
         <activity
             android:name=".AddRecipePage"
-            android:exported="true"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            android:label="Add new recipe">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".RecipesPage"
-            android:exported="true"
-            android:label="My recipes">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
