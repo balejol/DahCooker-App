@@ -47,7 +47,7 @@
 					android:layout_marginLeft="-5dp"
 					android:layout_marginTop="79dp"
 					android:gravity="center"
-					android:text="@string/__app_name__string"
+					android:text="Very cool app name:)"
 					android:textColor="@color/__app_name__color"
 					android:textSize="30sp"
 					android:textStyle="bold" />
@@ -75,7 +75,7 @@
 						android:layout_height="19.3dp"
 						android:layout_marginLeft="170dp"
 						android:layout_marginTop="224dp"
-						android:text="@string/forgot_password__string"
+						android:text="Forgot password?"
 						android:textColor="@color/forgot_password__color"
 						android:textSize="13sp"
 						android:textStyle="bold" />
@@ -101,8 +101,8 @@
 							android:layout_height="32.15dp"
 							android:layout_marginStart="0dp"
 							android:layout_marginTop="1dp"
-							android:background="@drawable/rectangle_shape"
-							android:text="@string/sign_up_string" />
+							android:background="@drawable/button_color"
+							android:text="Sign up" />
 
 					</RelativeLayout>
 
@@ -127,8 +127,8 @@
 							android:layout_height="38dp"
 							android:layout_marginStart="0dp"
 							android:layout_marginTop="0dp"
-							android:background="@drawable/rectangle_shape"
-							android:text="@string/sign_in_string" />
+							android:background="@drawable/button_color"
+							android:text="Sign in" />
 
 					</RelativeLayout>
 
@@ -163,7 +163,7 @@
 							android:layout_height="19.3dp"
 							android:layout_marginLeft="39dp"
 							android:layout_marginTop="0dp"
-							android:text="@string/password_ek2_string"
+							android:text="Password"
 							android:textColor="@color/forgot_password__color"
 							android:textSize="13sp"
 							android:textStyle="bold" />
@@ -200,7 +200,7 @@
 							android:layout_height="19.3dp"
 							android:layout_marginLeft="39dp"
 							android:layout_marginTop="0dp"
-							android:text="@string/username_ek2_string"
+							android:text="Username"
 							android:textColor="@color/forgot_password__color"
 							android:textSize="13sp"
 							android:textStyle="bold" />
@@ -215,7 +215,7 @@
 						android:layout_marginLeft="56dp"
 						android:layout_marginTop="12dp"
 						android:gravity="center"
-						android:text="@string/welcome__string"
+						android:text="Welcome!"
 						android:textColor="@color/_bg__login_box_ek1_color"
 						android:textSize="25sp"
 						android:textStyle="bold" />

@@ -19,5 +19,5 @@
 	<color name="_bg__login_box_ek1_color">#000000</color>
 	<color name="login_box_ek2_color">#D9CC7F</color>
 	<color name="forgot_password__color">#1E1E1E</color>
-	<color name="rectangle_34_color">#CA895F</color>
+	<color name="button_color">#CA895F</color>
 </resources>

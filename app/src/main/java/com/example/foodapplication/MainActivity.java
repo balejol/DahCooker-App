@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button button1 = findViewById(R.id.ingredients_button); // Find the "Ingredients" button by its ID
+        Button button1 = findViewById(R.id.ingredients); // Find the "Ingredients" button by its ID
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button button2 = findViewById(R.id.ingredients_button); // Find the "Add Recipe" button by its ID
+        Button button2 = findViewById(R.id.add_recipe); // Find the "Add Recipe" button by its ID
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
