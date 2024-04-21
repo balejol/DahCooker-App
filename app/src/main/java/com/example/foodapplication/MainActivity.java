@@ -51,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent intent = new Intent(this, MusicService.class);
+        startService(intent);
+
         Button button1 = findViewById(R.id.ingredients); // Find the "Ingredients" button by its ID
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
