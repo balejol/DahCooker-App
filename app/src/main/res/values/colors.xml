@@ -12,7 +12,7 @@
 	<color name="teal_700">#FF018786</color>
 	<color name="black">#FF000000</color>
 	<color name="white">#FFFFFFFF</color>
-
+	<color name="scrollIndicatorColor">#D9CC7F</color>
 	<color name="_bg__login_ek2_color">#FFDAB8</color>
 	<color name="top_color">#634133</color>
 	<color name="__app_name__color">#FFFFFF</color>

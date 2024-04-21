@@ -204,7 +204,7 @@
                     android:layout_marginLeft="-5dp"
                     android:layout_marginTop="79dp"
                     android:gravity="center"
-                    android:text="Registracija"
+                    android:text="Registration"
                     android:textColor="@color/__app_name__color"
                     android:textSize="30sp"
                     android:textStyle="bold" />
