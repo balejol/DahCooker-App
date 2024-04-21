@@ -7,7 +7,8 @@ import java.util.List;
 public class Recipe
 {
     private String recipeName;
-    private ArrayList<Ingredient> Ingredients;
+    private List<Ingredient> Ingredients;
+
     public Recipe()
     {
         recipeName = "";
@@ -18,7 +19,7 @@ public class Recipe
     public Ingredient GetIngredient(int i){return Ingredients.get(i);}
     public int GetAmountOfIngredients(){return Ingredients.size();}
 
-    public void AddRecipe(String name, ArrayList<Ingredient> ingr)
+    public void AddRecipe(String name, List<Ingredient> ingr)
     {
         recipeName = name;
 

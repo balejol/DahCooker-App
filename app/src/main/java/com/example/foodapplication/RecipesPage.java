@@ -2,6 +2,9 @@ package com.example.foodapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.method.ScrollingMovementMethod;
@@ -11,12 +14,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.content.Intent;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.LinearLayout.LayoutParams;
 
 import java.util.ArrayList;
 public class RecipesPage extends AppCompatActivity
@@ -46,8 +51,6 @@ public class RecipesPage extends AppCompatActivity
         }
     };
 
-
-
     Button _button;
     Button backButton;
 
@@ -59,12 +62,79 @@ public class RecipesPage extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipes);
+
         _button = (Button) findViewById(R.id.button);
         backButton = (Button) findViewById(R.id.backButtonRecipes);
 
         LinearLayout recipeLayout = (LinearLayout) findViewById(R.id.recipeListLayout);
 
-        for(int i = 0; i < RecipesList.GetN(); i++) {
+        for(int i = 0; i < RecipesList.GetN(); i++)
+        {
+            LinearLayout oneRecipeLayout = new LinearLayout(getBaseContext());
+            oneRecipeLayout.setOrientation(LinearLayout.VERTICAL);
+            oneRecipeLayout.setMinimumWidth(400);
+            oneRecipeLayout.setGravity(Gravity.CENTER);
+            oneRecipeLayout.setGravity(View.TEXT_ALIGNMENT_CENTER);
+            oneRecipeLayout.setBackgroundResource(R.drawable.login_box_ek2_shape);
+            LayoutParams params = new LayoutParams(
+                    LayoutParams.MATCH_PARENT,
+                    LayoutParams.WRAP_CONTENT
+            );
+            params.setMargins(0, 10, 0, 10);
+            oneRecipeLayout.setPadding(30, 30, 30, 30);
+            oneRecipeLayout.setLayoutParams(params);
+
+            //recipe name
+            TextView tw_recipeName = new TextView(getBaseContext());
+            tw_recipeName.setText(RecipesList.GetName(i));
+            tw_recipeName.setTextSize(30);
+            tw_recipeName.setTextColor(Color.BLACK);
+            tw_recipeName.setWidth(450);
+            tw_recipeName.setMaxWidth(450);
+            oneRecipeLayout.addView(tw_recipeName);
+
+            //"ingredients:"
+            TextView tw_text = new TextView(getBaseContext());
+            tw_text.setGravity(Gravity.CENTER);
+            tw_text.setGravity(View.TEXT_ALIGNMENT_CENTER);
+            tw_text.setText("Ingredients:");
+            tw_text.setTextSize(20);
+            tw_text.setTextColor(Color.BLACK);
+            oneRecipeLayout.addView(tw_text);
+
+            //ingredient list
+            TextView tw_ingredients = new TextView(getBaseContext());
+            tw_ingredients.setTextColor(Color.BLACK);
+            String temporaryIngredientsList = "";
+            if(RecipesList.GetRecipe(i).GetAmountOfIngredients() == 0)
+            {
+                temporaryIngredientsList = "There are no ingredients \n";
+            }
+            for(int k = 0; k < RecipesList.GetRecipe(i).GetAmountOfIngredients(); k++)
+            {
+                temporaryIngredientsList = temporaryIngredientsList + "- " +
+                        RecipesList.GetRecipe(i).GetIngredient(k).GetName() + " " +
+                        RecipesList.GetRecipe(i).GetIngredient(k).GetAmount() + " " +
+                        RecipesList.GetRecipe(i).GetIngredient(k).GetMeasurement() +"\n";
+            }
+            tw_ingredients.setText(temporaryIngredientsList);
+            oneRecipeLayout.addView(tw_ingredients);
+
+            //remove button
+            Button ingRemoveButton = new Button(getBaseContext());
+            ingRemoveButton.setOnClickListener(RemoveRecipe);
+            ingRemoveButton.setBackgroundColor(Color.rgb(255, 127, 127));
+            ingRemoveButton.setText("REMOVE");
+            ingRemoveButton.setTextColor(Color.WHITE);
+            ingRemoveButton.setGravity(Gravity.CENTER);
+            ingRemoveButton.setLayoutParams(new LinearLayout.LayoutParams(300, 100));
+            ingRemoveButton.setBackgroundResource(R.drawable.rectangle_27_shape);
+            oneRecipeLayout.addView(ingRemoveButton);
+
+            recipeLayout.addView(oneRecipeLayout);
+        }
+
+/*        for(int i = 0; i < RecipesList.GetN(); i++) {
             TextView recipeTitle = new TextView(this);
             recipeTitle.setText("RECIPE - " + RecipesList.GetName(i));
             recipeTitle.setGravity(Gravity.CENTER);
@@ -77,7 +147,7 @@ public class RecipesPage extends AppCompatActivity
                 ingredients.setGravity(Gravity.LEFT);
                 recipeLayout.addView(ingredients);
             }
-        }
+        }*/
 
         backButton.setOnClickListener(new View.OnClickListener()
         {
@@ -100,4 +170,35 @@ public class RecipesPage extends AppCompatActivity
             }
         });
     }
+    View.OnClickListener RemoveRecipe = new View.OnClickListener()
+    {
+
+        @Override
+        public void onClick(View btt)
+        {
+            AlertDialog dialog = new AlertDialog.Builder(RecipesPage.this)
+                    .setTitle("Confirmation")
+                    .setMessage("Are you sure you want to remove this recipe?")
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            Toast.makeText(RecipesPage.this, "Recipe removed", Toast.LENGTH_SHORT).show();
+                            LinearLayout recipes = (LinearLayout) findViewById((R.id.recipeListLayout));
+                            LinearLayout recipeLine = (LinearLayout) btt.getParent();
+                            recipes.removeView(recipeLine);
+                            TextView name = (TextView) recipeLine.getChildAt(0);
+                            String removeName = (String) name.getText();
+
+                            for (int i = 0; i < RecipesList.GetN(); i++) {
+                                if (RecipesList.GetRecipe(i).GetRecipeName() == removeName) {
+                                    RecipesList.Remove(i);
+                                }
+                            }
+                        }
+                    })
+                    .setNegativeButton(android.R.string.no, null).show();
+            dialog.getWindow().setBackgroundDrawableResource(R.drawable.rectangle_27_shape);
+        }
+
+    };
 }

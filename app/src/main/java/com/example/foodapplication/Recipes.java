@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Recipes
 {
-    ArrayList<Recipe> Recipes;
+    List<Recipe> Recipes;
 
     public Recipes()
     {
@@ -26,7 +26,6 @@ public class Recipes
     {
         return Recipes.get(i).GetRecipeName();
     }
-
     public void Remove (int i)
     {
         Recipes.remove(i);
