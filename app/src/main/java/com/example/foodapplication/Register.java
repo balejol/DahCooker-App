@@ -22,6 +22,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class Register extends AppCompatActivity {
 
@@ -107,7 +108,7 @@ public class Register extends AppCompatActivity {
                                         finish();
                                 } else {
                                     // If sign in fails, display a message to the user.
-                                    Toast.makeText(Register.this, "Authentication failed.",
+                                    Toast.makeText(Register.this, "Authentication failed. Make sure your password has at least 6 characters",
                                             Toast.LENGTH_SHORT).show();
                                 }
                             }
