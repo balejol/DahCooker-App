@@ -51,14 +51,13 @@
                     android:layout_width="209dp"
                     android:layout_height="105dp"
                     android:layout_gravity="center_horizontal|center"
-                    android:layout_marginLeft="0dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:text="Really cool name of the app"
                     android:textColor="@color/__app_name__color"
                     android:textSize="24sp"
                     android:textStyle="bold" />
-
 
                 <RelativeLayout
                     android:id="@+id/login_box"
@@ -96,37 +95,32 @@
                         android:gravity="center"
                         android:text="We recommend"
                         android:textSize="30sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:visibility="visible" />
 
+                    <!-- ADD RECIPE BUTTON -->
                     <RelativeLayout
-                        android:id="@+id/sign_up_button"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
                         android:layout_marginStart="93dp"
                         android:layout_marginTop="314dp"
-                        android:visibility="gone">
-
-                        <View
-                            android:id="@+id/_bg__sign_up_button_ek1"
-                            android:layout_width="140dp"
-                            android:layout_height="33dp"
-                            android:layout_marginStart="-113dp"
-                            android:layout_marginTop="-530dp" />
+                        android:layout_marginEnd="30dp">
 
                         <Button
-                            android:id="@+id/rectangle_up"
+                            android:id="@+id/add_recipe_button"
                             android:layout_width="140dp"
-                            android:layout_height="32.15dp"
+                            android:layout_height="42.15dp"
                             android:layout_marginStart="0dp"
                             android:layout_marginTop="1dp"
                             android:background="@drawable/rectangle_shape"
-                            android:text="@string/sign_up_string" />
-
+                            android:text="Add recipe" />
                     </RelativeLayout>
 
-
+                    <!-- INGREDIENTS BUTTON -->
                     <RelativeLayout
-                        android:id="@+id/ingredients_button"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
@@ -135,18 +129,14 @@
                         android:layout_marginStart="30dp"
                         android:layout_marginTop="171dp"
                         android:layout_marginEnd="30dp">
-
                         <Button
-                            android:id="@+id/rectangle_ing"
+                            android:id="@+id/ingredients_button"
                             android:layout_width="400dp"
                             android:layout_height="90dp"
-                            android:background="@drawable/rectangle_shape"
                             android:paddingTop="25dp"
-                            android:text="Find what to cook based on the food you have"
-                            android:textAlignment="center" />
-
+                            android:background="@drawable/rectangle_shape"
+                            android:text="Find what to cook based on the food you have" />
                     </RelativeLayout>
-
                     <TextView
                         android:id="@+id/ingredients_text"
                         android:layout_width="match_parent"
@@ -201,28 +191,6 @@
         android:layout_marginTop="664dp"
         android:text="Logout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="58dp"
-        android:text="Ingredients"
-        android:visibility="gone"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="58dp"
-        android:text="Add Recipe"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button1"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

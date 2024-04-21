@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
         inflater.inflate(R.menu.example_menu, menu);
         return true;
     }
+
+    // - - - MENU - - -
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -49,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button button1 = findViewById(R.id.button1); // Find the "Ingredients" button by its ID
+        Button button1 = findViewById(R.id.ingredients_button); // Find the "Ingredients" button by its ID
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button button2 = findViewById(R.id.button2); // Find the "Add Recipe" button by its ID
+        Button button2 = findViewById(R.id.ingredients_button); // Find the "Add Recipe" button by its ID
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
