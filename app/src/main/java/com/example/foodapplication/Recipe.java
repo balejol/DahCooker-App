@@ -7,24 +7,24 @@ import java.util.List;
 public class Recipe
 {
     private String recipeName;
-    private ArrayList<String> ingredients;
+    private ArrayList<Ingredient> Ingredients;
     public Recipe()
     {
         recipeName = "";
-        ingredients = new ArrayList<String>();
+        Ingredients = new ArrayList<Ingredient>();
     }
 
     public String GetRecipeName(){return recipeName;}
-    public String GetIngredient(int i){return ingredients.get(i);}
-    public int GetAmountOfIngredients(){return ingredients.size();}
+    public Ingredient GetIngredient(int i){return Ingredients.get(i);}
+    public int GetAmountOfIngredients(){return Ingredients.size();}
 
-    public void AddRecipe(String name, ArrayList<String> ingr)
+    public void AddRecipe(String name, ArrayList<Ingredient> ingr)
     {
         recipeName = name;
 
         for(int i = 0; i < ingr.size(); i++)
         {
-            ingredients.add(ingr.get(i));
+            Ingredients.add(ingr.get(i));
         }
     }
 }

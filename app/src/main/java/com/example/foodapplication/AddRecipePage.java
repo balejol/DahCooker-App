@@ -1,16 +1,21 @@
 package com.example.foodapplication;
 
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static com.example.foodapplication.RecipesPage.RecipesList;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.*;
 import android.widget.EditText;
@@ -24,39 +29,29 @@ public class AddRecipePage extends AppCompatActivity {
     Button cancelCreateRecipe;
     Button createRecipe;
     Button addIngredient;
-    EditText recipeNameField;
     String recipeName;
-    EditText ingredientName;
     List<EditText> allIngredients;
-    LinearLayout ingredientLayout;
+    ArrayList<Ingredient> Ingredients;
+    private static final String[] measurements = new String[]{"vnt.", "l", "ml", "g", "mg", "a.š.", "v.š."};
 
-    ArrayList<String> Ingredients;
+    Spinner DropDownMeasurements;
+    int id = 0;
 
-    int id;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_recipe);
 
-        //užrašas
-        TextView textView = findViewById(R.id.textView);
-        String data = getIntent().getStringExtra("Data");
-        textView.setText(data);
-
         //ingridientų sąrašas
-        Ingredients = new ArrayList<String>();
-        allIngredients = new ArrayList<EditText>();
-        id = 0;
-
+        Ingredients = new ArrayList<Ingredient>();
         //randami laukai
         EditText recipeName = (EditText) findViewById(R.id.recipeNameTextField);
-
         //randami mygtukai
-        Button cancelCreateRecipe = (Button) findViewById(R.id.cancelCreateRecipeButton);
-        Button createRecipe = (Button) findViewById((R.id.createRecipeButton));
-        Button addIngredient = (Button) findViewById((R.id.addIngredient));
-
+        cancelCreateRecipe = (Button) findViewById(R.id.cancelCreateRecipeButton);
+        createRecipe = (Button) findViewById((R.id.createRecipeButton));
+        addIngredient = (Button) findViewById((R.id.addIngredient));
+        //metodai
         cancelCreateRecipe.setOnClickListener(Cancel);
         recipeName.addTextChangedListener(InsertRecipeNameTextWatcher);
         createRecipe.setOnClickListener(SaveRecipeOnClick);
@@ -79,15 +74,83 @@ public class AddRecipePage extends AppCompatActivity {
     {
         @Override
         public void onClick(View v) {
+            //HorizontalScrollView ingredientLayoutScrollable = (HorizontalScrollView)
+            //        findViewById(R.id.ingredientLayoutScroll);
+
+            //visu ingredientu sarasas
             LinearLayout ingredientLayout = (LinearLayout)
                     findViewById(R.id.ingredientLayout);
-            EditText ingredient = new EditText(getBaseContext());
+            //vieno ingrediento duomenų eilute
+            LinearLayout oneIngredientLayout = new LinearLayout(getBaseContext());
+            oneIngredientLayout.setOrientation(LinearLayout.HORIZONTAL);
+            oneIngredientLayout.setMinimumWidth(400);
+            oneIngredientLayout.setGravity(Gravity.CENTER);
+
+            EditText ingName = new EditText(getBaseContext()); //ingrediento vardas
+            EditText ingAmount = new EditText(getBaseContext()); //ingrediento kiekis
+            Spinner ingMeasurement = new Spinner(getBaseContext()); //ingrediento matmuo
+            Button ingRemoveButton = new Button(getBaseContext());
             id = id + 1;
-            ingredient.setId(id);
-            allIngredients.add(ingredient);
-            ingredient.setHint("Ingredient");
-            ingredient.setGravity(Gravity.CENTER);
-            ingredientLayout.addView(ingredient);
+            ingName.setId(id*2);
+            ingAmount.setId(id*3);
+            ingMeasurement.setId(id*4);
+            ingRemoveButton.setId(id);
+
+            //allIngredients.add(ingredient);
+            //ingName
+            ingName.setHint("Ingredient");
+            ingName.setGravity(Gravity.CENTER);
+            ingName.setWidth(450);
+            ingName.setMaxWidth(450);
+            ingName.setMaxLines(1);
+            ingName.setFilters(new InputFilter[]
+                    {new InputFilter.LengthFilter(100)});
+            oneIngredientLayout.addView(ingName);
+
+            //ingAmount
+            ingAmount.setHint("Amt");
+            ingAmount.setGravity(Gravity.CENTER);
+            ingAmount.setWidth(150);
+            ingAmount.setMaxWidth(150);
+            ingAmount.setInputType(InputType.TYPE_CLASS_NUMBER);
+            ingAmount.setMaxLines(1);
+            ingAmount.setFilters(new InputFilter[]
+                    {new InputFilter.LengthFilter(10)});
+            oneIngredientLayout.addView(ingAmount);
+
+            //ingMeasurement
+            ArrayAdapter<String>adapter = new ArrayAdapter<String>(
+                    AddRecipePage.this,
+                    android.R.layout.simple_spinner_item,
+                    measurements);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            ingMeasurement.setAdapter(adapter);
+            ingMeasurement.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+            ingMeasurement.setLayoutParams(new LinearLayout.LayoutParams(250, 50));
+            //ingMeasurement.setMinimumHeight(MATCH_PARENT);
+            oneIngredientLayout.addView(ingMeasurement);
+
+            //ingRemoveButton
+            ingRemoveButton.setOnClickListener(RemoveIngredient);
+            ingRemoveButton.setBackgroundColor(Color.rgb(255, 127, 127));
+            ingRemoveButton.setText("X");
+            ingRemoveButton.setLayoutParams(new LinearLayout.LayoutParams(100, 100));
+
+            oneIngredientLayout.addView(ingRemoveButton);
+
+            //pridedama ingrediento eilute
+            ingredientLayout.addView(oneIngredientLayout);
+        }
+    };
+    View.OnClickListener RemoveIngredient = new View.OnClickListener()
+    {
+        @Override
+        public void onClick(View btt)
+        {
+            int buttonId = btt.getId();
+            LinearLayout ingredients = (LinearLayout) findViewById((R.id.ingredientLayout));
+            LinearLayout ingredientLine = (LinearLayout) btt.getParent();
+            ingredients.removeView(ingredientLine);
         }
     };
     View.OnClickListener SaveRecipeOnClick = new View.OnClickListener()
@@ -95,7 +158,7 @@ public class AddRecipePage extends AppCompatActivity {
         @Override
         public void onClick(View view)
         {
-            for(int i=0; i < allIngredients.size(); i++){
+/*            for(int i=0; i < allIngredients.size(); i++){
                 Ingredients.add(allIngredients.get(i).getText().toString());
             }
 
@@ -103,9 +166,10 @@ public class AddRecipePage extends AppCompatActivity {
             temporaryRecipe.AddRecipe(recipeName, Ingredients);
             RecipesList.AddRecipe(temporaryRecipe);
             Intent intent = new Intent(getBaseContext(), RecipesPage.class);
-            startActivity(intent);
+            startActivity(intent);*/
         }
     };
+
     TextWatcher InsertRecipeNameTextWatcher = new TextWatcher()
     {
         @Override

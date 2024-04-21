@@ -63,7 +63,7 @@ public class RecipesPage extends AppCompatActivity
             public void onClick(View view)
             {
                 Intent intent = new Intent(getBaseContext(), AddRecipePage.class);
-                intent.putExtra("Data", "Please enter information about a recipe");
+                //intent.putExtra("Data", "Please enter information about a recipe");
                 startActivity(intent);
             }
         });

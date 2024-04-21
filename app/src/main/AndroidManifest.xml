@@ -43,7 +43,8 @@
         <!-- RecipeActivity -->
         <activity
             android:name=".AddRecipePage"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden|adjustPan">
         </activity>
         <activity
             android:name=".RecipesPage"
