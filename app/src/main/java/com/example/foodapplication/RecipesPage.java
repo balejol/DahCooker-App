@@ -75,7 +75,7 @@ public class RecipesPage extends AppCompatActivity
             oneRecipeLayout.setMinimumWidth(400);
             oneRecipeLayout.setGravity(Gravity.CENTER);
             oneRecipeLayout.setGravity(View.TEXT_ALIGNMENT_CENTER);
-            oneRecipeLayout.setBackgroundResource(R.drawable.login_box_ek2_shape);
+            oneRecipeLayout.setBackgroundResource(R.drawable.button_color);
             LayoutParams params = new LayoutParams(
                     LayoutParams.MATCH_PARENT,
                     LayoutParams.WRAP_CONTENT
@@ -128,7 +128,7 @@ public class RecipesPage extends AppCompatActivity
             ingRemoveButton.setTextColor(Color.WHITE);
             ingRemoveButton.setGravity(Gravity.CENTER);
             ingRemoveButton.setLayoutParams(new LinearLayout.LayoutParams(300, 100));
-            ingRemoveButton.setBackgroundResource(R.drawable.rectangle_27_shape);
+            ingRemoveButton.setBackgroundResource(R.drawable.button_color);
             oneRecipeLayout.addView(ingRemoveButton);
 
             recipeLayout.addView(oneRecipeLayout);
@@ -197,7 +197,7 @@ public class RecipesPage extends AppCompatActivity
                         }
                     })
                     .setNegativeButton(android.R.string.no, null).show();
-            dialog.getWindow().setBackgroundDrawableResource(R.drawable.rectangle_27_shape);
+            dialog.getWindow().setBackgroundDrawableResource(R.drawable.button_color);
         }
 
     };

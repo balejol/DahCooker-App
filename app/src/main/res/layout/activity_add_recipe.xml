@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddRecipePage"
-    android:background="@drawable/_bg__login_ek2_shape">
+    android:background="@drawable/_bg_color_nude">
 
 
     <ScrollView
@@ -54,7 +54,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:background="@drawable/write_username_shape" />
+                android:background="@drawable/write_shape_white" />
 
             <LinearLayout
                 android:id="@+id/ingredientLayout"
@@ -69,7 +69,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:background="@drawable/write_username_shape">
+                android:background="@drawable/write_shape_white">
             </LinearLayout>
 
             <!--            <ScrollView
@@ -102,7 +102,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:background="@drawable/rectangle_27_shape"/>
+                android:background="@drawable/button_color"/>
 
             <TextView
                 android:id="@+id/textView2"
@@ -134,7 +134,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.8"
-                android:background="@drawable/write_username_shape" />
+                android:background="@drawable/write_shape_white" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -166,7 +166,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.8"
-                android:background="@drawable/write_username_shape" />
+                android:background="@drawable/write_shape_white" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -209,7 +209,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.957"
-                    android:background="@drawable/rectangle_27_shape"/>
+                    android:background="@drawable/button_color"/>
 
             </LinearLayout>
 
@@ -227,7 +227,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.95"
-        android:background="@drawable/rectangle_27_shape"/>
+        android:background="@drawable/button_color"/>
 
     <Button
         android:id="@+id/cancelCreateRecipeButton"
@@ -240,6 +240,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.95"
-        android:background="@drawable/rectangle_27_shape"/>
+        android:background="@drawable/button_color"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
