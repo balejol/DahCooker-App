@@ -2,16 +2,16 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="AddRecipePage">
-        <State />
-      </entry>
-      <entry key="IngredientsActivity">
+      <entry key="Login">
         <State />
       </entry>
       <entry key="LoginActivity">
         <State />
       </entry>
       <entry key="MainActivity">
+        <State />
+      </entry>
+      <entry key="Register">
         <State />
       </entry>
       <entry key="RegistrationActivity">

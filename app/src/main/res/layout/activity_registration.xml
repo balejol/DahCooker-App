@@ -32,6 +32,7 @@
                     android:background="@drawable/_bg_color_nude"
                     android:visibility="visible" />
 
+
                 <View
                     android:id="@+id/top"
                     android:layout_width="500dp"
@@ -40,19 +41,18 @@
                     android:layout_marginTop="-116dp"
                     android:background="@drawable/top_shape" />
 
-
                 <RelativeLayout
                     android:id="@+id/reg_box"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="45dp"
-                    android:layout_marginTop="216dp"
+                    android:layout_marginTop="190dp"
                     android:gravity="center">
 
                     <View
                         android:id="@+id/reg_box_green"
                         android:layout_width="320dp"
-                        android:layout_height="450dp"
+                        android:layout_height="440dp"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
                         android:background="@drawable/box_shape_yellow" />
@@ -62,16 +62,10 @@
                         android:id="@+id/sign_up_reg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/password"
                         android:layout_marginStart="60dp"
-                        android:layout_marginTop="360dp"
+                        android:layout_marginTop="72dp"
                         android:visibility="visible">
-
-                        <View
-                            android:id="@+id/_bg__sign_in_button_ek1"
-                            android:layout_width="207dp"
-                            android:layout_height="38dp"
-                            android:layout_marginStart="-80dp"
-                            android:layout_marginTop="-475dp" />
 
                         <Button
                             android:id="@+id/rectangle_in"
@@ -89,8 +83,9 @@
                         android:id="@+id/password"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/email"
                         android:layout_marginStart="38dp"
-                        android:layout_marginTop="250dp">
+                        android:layout_marginTop="22dp">
 
                         <EditText
                             android:id="@+id/write_pass"
@@ -127,8 +122,9 @@
                         android:id="@+id/email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/username"
                         android:layout_marginStart="38dp"
-                        android:layout_marginTop="175dp">
+                        android:layout_marginTop="26dp">
 
                         <EditText
                             android:id="@+id/write_mail"
@@ -137,7 +133,7 @@
                             android:layout_marginStart="39dp"
                             android:layout_marginTop="15dp"
                             android:background="@drawable/write_shape_white"
-                            android:inputType="textPassword" />
+                            android:inputType="textWebEmailAddress" />
 
                         <View
                             android:id="@+id/ellipse2.1"
@@ -153,7 +149,7 @@
                             android:layout_height="19.3dp"
                             android:layout_marginLeft="39dp"
                             android:layout_marginTop="0dp"
-                            android:text="@string/password_ek2_string"
+                            android:text="Email"
                             android:textColor="@color/forgot_password__color"
                             android:textSize="13sp"
                             android:textStyle="bold" />
@@ -164,8 +160,9 @@
                         android:id="@+id/username"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
                         android:layout_marginStart="38dp"
-                        android:layout_marginTop="96dp">
+                        android:layout_marginTop="81dp">
 
                         <EditText
                             android:id="@+id/write_username"
@@ -173,7 +170,8 @@
                             android:layout_height="38dp"
                             android:layout_marginStart="39dp"
                             android:layout_marginTop="15dp"
-                            android:background="@drawable/write_shape_white" />
+                            android:background="@drawable/write_shape_white"
+                            android:inputType="textPersonName" />
 
                         <View
                             android:id="@+id/ellipse2.2"
@@ -197,6 +195,19 @@
                     </RelativeLayout>
 
                 </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="417dp"
+                    android:layout_height="89dp"
+                    android:layout_gravity="center_horizontal|center"
+                    android:layout_marginLeft="-5dp"
+                    android:layout_marginTop="79dp"
+                    android:gravity="center"
+                    android:text="Registracija"
+                    android:textColor="@color/__app_name__color"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
             </RelativeLayout>
         </RelativeLayout>
