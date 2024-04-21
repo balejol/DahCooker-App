@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
@@ -164,7 +165,7 @@ public class AddRecipePage extends AppCompatActivity {
             ingRemoveButton.setBackgroundColor(Color.rgb(255, 127, 127));
             ingRemoveButton.setText("X");
             ingRemoveButton.setLayoutParams(new LinearLayout.LayoutParams(100, 100));
-
+            ingRemoveButton.setBackgroundResource(R.drawable.login_box_ek2_shape);
             oneIngredientLayout.addView(ingRemoveButton);
 
             //pridedama ingrediento eilute

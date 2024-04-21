@@ -62,7 +62,7 @@ public class RecipesPage extends AppCompatActivity
         _button = (Button) findViewById(R.id.button);
         backButton = (Button) findViewById(R.id.backButtonRecipes);
 
-        LinearLayout recipeLayout = (LinearLayout) findViewById(R.id.linearLayout);
+        LinearLayout recipeLayout = (LinearLayout) findViewById(R.id.recipeListLayout);
 
         for(int i = 0; i < RecipesList.GetN(); i++) {
             TextView recipeTitle = new TextView(this);

@@ -6,22 +6,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddRecipePage">
+    tools:context=".AddRecipePage"
+    android:background="@drawable/_bg__login_ek2_shape">
 
 
     <ScrollView
         android:id="@+id/scroll"
-        android:layout_width="410dp"
+        android:layout_width="395dp"
         android:layout_height="600dp"
         android:fillViewport="true"
         android:scrollbars="horizontal"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.335">
+        app:layout_constraintVertical_bias="0">
 
         <LinearLayout
             android:id="@+id/pageScroll"
@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
+                android:layout_margin="20dp"
                 android:ems="10"
                 android:gravity="center"
                 android:hint="Recipe name"
@@ -53,7 +53,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/write_username_shape" />
 
             <LinearLayout
                 android:id="@+id/ingredientLayout"
@@ -62,10 +63,13 @@
                 android:orientation="vertical"
                 android:fillViewport="true"
                 android:scrollbars="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/write_username_shape" />
 
             <!--            <ScrollView
                 android:id="@+id/ingredientLayoutScroll"
@@ -96,7 +100,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/rectangle_27_shape"/>
 
             <TextView
                 android:id="@+id/textView2"
@@ -120,13 +125,15 @@
                 android:inputType="textMultiLine"
                 android:lines="8"
                 android:scrollbars="vertical"
+                android:padding="10dp"
                 android:layout_marginBottom="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.8" />
+                app:layout_constraintVertical_bias="0.8"
+                android:background="@drawable/write_username_shape" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -151,12 +158,14 @@
                 android:lines="8"
                 android:scrollbars="vertical"
                 android:layout_marginBottom="20dp"
+                android:padding="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.8" />
+                app:layout_constraintVertical_bias="0.8"
+                android:background="@drawable/write_username_shape" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -198,7 +207,8 @@
                     app:layout_constraintHorizontal_bias="0.797"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.957" />
+                    app:layout_constraintVertical_bias="0.957"
+                    android:background="@drawable/rectangle_27_shape"/>
 
             </LinearLayout>
 
@@ -212,10 +222,11 @@
         android:text="Create new recipe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.797"
+        app:layout_constraintHorizontal_bias="0.81"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.957" />
+        app:layout_constraintVertical_bias="0.95"
+        android:background="@drawable/rectangle_27_shape"/>
 
     <Button
         android:id="@+id/cancelCreateRecipeButton"
@@ -224,9 +235,10 @@
         android:text="Cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.135"
+        app:layout_constraintHorizontal_bias="0.08"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.957" />
+        app:layout_constraintVertical_bias="0.95"
+        android:background="@drawable/rectangle_27_shape"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
