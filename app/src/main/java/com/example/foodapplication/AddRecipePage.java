@@ -4,6 +4,7 @@ import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static com.example.foodapplication.RecipesPage.RecipesList;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -28,6 +29,14 @@ import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+//import com.google.firebase.database.DatabaseReference;
+//import com.google.firebase.database.FirebaseDatabase;
 
 public class AddRecipePage extends AppCompatActivity {
 
@@ -56,15 +65,18 @@ public class AddRecipePage extends AppCompatActivity {
         }
     };
 
-    Button cancelCreateRecipe;
-    Button createRecipe;
-    Button addIngredient;
-    String recipeName;
-    List<EditText> allIngredients;
+    //FirebaseDatabase database;
+    //DatabaseReference recipesRef;
+    Button bt_cancelCreateRecipe;
+    Button bt_createRecipe;
+    Button bt_addIngredient;
+    EditText et_recipeName;
+    EditText et_preparation;
+    EditText et_notes;
+    //String recipeName;
     ArrayList<Ingredient> Ingredients;
-    private static final String[] measurements = new String[]{"vnt.", "l", "ml", "g", "mg", "a.š.", "v.š."};
+    private static final String[] measurements = new String[]{"unit", "l", "ml", "g", "mg", "tsp", "tbsp"};
 
-    Spinner DropDownMeasurements;
     int id = 0;
 
     @Override
@@ -73,19 +85,26 @@ public class AddRecipePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_recipe);
 
+        //database
+        //FirebaseApp.initializeApp(this);
+        //database = FirebaseDatabase.getInstance();
+        //recipesRef = database.getReference("recipes");
+
         //ingridientų sąrašas
         Ingredients = new ArrayList<Ingredient>();
         //randami laukai
-        EditText recipeName = (EditText) findViewById(R.id.recipeNameTextField);
+        et_recipeName = (EditText) findViewById(R.id.recipeNameTextField);
         //randami mygtukai
-        cancelCreateRecipe = (Button) findViewById(R.id.cancelCreateRecipeButton);
-        createRecipe = (Button) findViewById((R.id.createRecipeButton));
-        addIngredient = (Button) findViewById((R.id.addIngredient));
+        bt_cancelCreateRecipe = (Button) findViewById(R.id.cancelCreateRecipeButton);
+        bt_createRecipe = (Button) findViewById((R.id.createRecipeButton));
+        bt_addIngredient = (Button) findViewById((R.id.addIngredient));
+        et_notes = (EditText) findViewById(R.id.notesField);
+        et_preparation = (EditText) findViewById(R.id.preparationField);
         //metodai
-        cancelCreateRecipe.setOnClickListener(Cancel);
-        recipeName.addTextChangedListener(InsertRecipeNameTextWatcher);
-        createRecipe.setOnClickListener(SaveRecipeOnClick);
-        addIngredient.setOnClickListener(AddIngredientField);
+        bt_cancelCreateRecipe.setOnClickListener(Cancel);
+        //et_recipeName.addTextChangedListener(InsertRecipeNameTextWatcher);
+        bt_createRecipe.setOnClickListener(SaveRecipeOnClick);
+        bt_addIngredient.setOnClickListener(AddIngredientField);
     }
 
     View.OnClickListener Cancel = new View.OnClickListener()
@@ -93,8 +112,8 @@ public class AddRecipePage extends AppCompatActivity {
         @Override
         public void onClick(View view)
         {
-            if(RecipesList.GetN() != 0)
-                RecipesList.Remove(RecipesList.GetN() - 1);
+/*            if(RecipesList.GetN() != 0)
+                RecipesList.Remove(RecipesList.GetN() - 1);*/
             Intent intent = new Intent(getBaseContext(), RecipesPage.class);
             startActivity(intent);
         }
@@ -177,7 +196,6 @@ public class AddRecipePage extends AppCompatActivity {
         @Override
         public void onClick(View btt)
         {
-            int buttonId = btt.getId();
             LinearLayout ingredients = (LinearLayout) findViewById((R.id.ingredientLayout));
             LinearLayout ingredientLine = (LinearLayout) btt.getParent();
             ingredients.removeView(ingredientLine);
@@ -188,19 +206,68 @@ public class AddRecipePage extends AppCompatActivity {
         @Override
         public void onClick(View view)
         {
-/*            for(int i=0; i < allIngredients.size(); i++){
-                Ingredients.add(allIngredients.get(i).getText().toString());
+            String recipeName = et_recipeName.getText().toString();
+            List<Ingredient> IngredientList = new ArrayList<>();
+
+            LinearLayout ingredientsLayout = (LinearLayout) findViewById((R.id.ingredientLayout));
+
+            for(int i = 0; i < ingredientsLayout.getChildCount(); i++)
+            {
+                LinearLayout oneIngredientLayout = (LinearLayout) ingredientsLayout.getChildAt(i);
+                EditText et_ingredientName = (EditText) oneIngredientLayout.getChildAt(0);
+                EditText et_ingredientAmount = (EditText) oneIngredientLayout.getChildAt(1);
+                Spinner sp_ingredientMeasurement = (Spinner) oneIngredientLayout.getChildAt(2);
+
+                if(!(et_ingredientName.getText().toString().equals("")) ||
+                        !(et_ingredientAmount.getText().toString().equals("")))
+                {
+                    String ingredientName = et_ingredientName.getText().toString();
+                    String ingredientAmount = et_ingredientAmount.getText().toString();
+                    String ingredientMeasurement = sp_ingredientMeasurement.getSelectedItem().toString();
+
+                    Ingredient temporaryIngredient = new Ingredient(
+                            ingredientName,
+                            Double.parseDouble(ingredientAmount),
+                            ingredientMeasurement);
+
+                    IngredientList.add(temporaryIngredient);
+                }
             }
 
-            Recipe temporaryRecipe = new Recipe();
-            temporaryRecipe.AddRecipe(recipeName, Ingredients);
-            RecipesList.AddRecipe(temporaryRecipe);
-            Intent intent = new Intent(getBaseContext(), RecipesPage.class);
-            startActivity(intent);*/
+            boolean exist = false;
+
+            for(int j = 0; j < RecipesList.GetN(); j++)
+            {
+                if(recipeName == RecipesList.GetName(j))
+                {
+                    Toast.makeText(AddRecipePage.this, "Such name already exist.",
+                            Toast.LENGTH_SHORT).show();
+                    exist = true;
+                }
+            }
+
+            if(exist == false)
+            {
+                if(IngredientList.size() > 0 && recipeName != null)
+                {
+                    Toast.makeText(AddRecipePage.this, "Recipe added.",
+                            Toast.LENGTH_SHORT).show();
+                    Recipe recipe = new Recipe();
+                    recipe.AddRecipe(recipeName, IngredientList);
+
+                    RecipesList.AddRecipe(recipe);
+                    Intent intent = new Intent(getBaseContext(), RecipesPage.class);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(AddRecipePage.this, "Failed to add recipe. Check name and ingredients.",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
         }
     };
 
-    TextWatcher InsertRecipeNameTextWatcher = new TextWatcher()
+/*    TextWatcher InsertRecipeNameTextWatcher = new TextWatcher()
     {
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count)
@@ -213,7 +280,7 @@ public class AddRecipePage extends AppCompatActivity {
         @Override
         public void afterTextChanged(Editable s)
         {
-            recipeName = s.toString();
+            //recipeName = s.toString();
         }
-    };
+    };*/
 }

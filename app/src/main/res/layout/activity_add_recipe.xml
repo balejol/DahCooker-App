@@ -69,7 +69,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:background="@drawable/write_username_shape" />
+                android:background="@drawable/write_username_shape">
+            </LinearLayout>
 
             <!--            <ScrollView
                 android:id="@+id/ingredientLayoutScroll"
@@ -116,7 +117,7 @@
                 app:layout_constraintVertical_bias="0.553" />
 
             <EditText
-                android:id="@+id/editTextText2"
+                android:id="@+id/preparationField"
                 android:layout_width="350dp"
                 android:layout_height="200dp"
                 android:ems="10"
@@ -148,7 +149,7 @@
                 app:layout_constraintVertical_bias="0.553" />
 
             <EditText
-                android:id="@+id/editTextText3"
+                android:id="@+id/notesField"
                 android:layout_width="350dp"
                 android:layout_height="200dp"
                 android:ems="10"
