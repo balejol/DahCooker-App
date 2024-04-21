@@ -16,6 +16,9 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.ViewGroup;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
 import android.widget.*;
 import android.widget.EditText;
@@ -26,6 +29,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AddRecipePage extends AppCompatActivity {
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.example_menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.item1:
+                Toast.makeText(this, "Item 1 selected", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.item2:
+                Intent ingredientsIntent = new Intent(AddRecipePage.this, IngredientsActivity.class);
+                startActivity(ingredientsIntent);
+                return true;
+            case R.id.item3:
+                Intent recipeIntent = new Intent(AddRecipePage.this, RecipesPage.class);
+                startActivity(recipeIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    };
+
     Button cancelCreateRecipe;
     Button createRecipe;
     Button addIngredient;
