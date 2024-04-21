@@ -31,6 +31,7 @@ import java.util.List;
 
 public class AddRecipePage extends AppCompatActivity {
 
+    // - - - - MENU - - -
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -41,15 +42,16 @@ public class AddRecipePage extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.item1:
-                Toast.makeText(this, "Item 1 selected", Toast.LENGTH_SHORT).show();
+                Intent mainIntent = new Intent(AddRecipePage.this, MainActivity.class);
+                startActivity(mainIntent);
                 return true;
             case R.id.item2:
-                Intent ingredientsIntent = new Intent(AddRecipePage.this, IngredientsActivity.class);
-                startActivity(ingredientsIntent);
-                return true;
-            case R.id.item3:
-                Intent recipeIntent = new Intent(AddRecipePage.this, RecipesPage.class);
+                Intent recipeIntent = new Intent(AddRecipePage.this, IngredientsActivity.class);
                 startActivity(recipeIntent);
+                return true;
+            case R.id.item4:
+                Intent settingsIntent = new Intent(AddRecipePage.this, SettingsActivity.class);
+                startActivity(settingsIntent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

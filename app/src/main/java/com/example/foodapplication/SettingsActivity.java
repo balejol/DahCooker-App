@@ -9,6 +9,9 @@ import android.content.ServiceConnection;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -16,6 +19,33 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 public class SettingsActivity extends AppCompatActivity {
+
+    // - - - - MENU - - -
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.example_menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.item1:
+                Intent mainIntent = new Intent(SettingsActivity.this, MainActivity.class);
+                startActivity(mainIntent);
+                return true;
+            case R.id.item2:
+                Intent recipeIntent = new Intent(SettingsActivity.this, IngredientsActivity.class);
+                startActivity(recipeIntent);
+                return true;
+            case R.id.item3:
+                Intent settingsIntent = new Intent(SettingsActivity.this, AddRecipePage.class);
+                startActivity(settingsIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    };
 
     private MusicService musicService;
     private boolean isServiceBound = false;

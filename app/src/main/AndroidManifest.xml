@@ -74,6 +74,11 @@
             </intent-filter>
         </activity>
 
+        <!-- RecipeHistoryActivity -->
+        <activity
+            android:name=".RecipeHistoryActivity"
+            android:exported="true" />
+
         <!-- SettingsActivity -->
         <activity
             android:name=".SettingsActivity"

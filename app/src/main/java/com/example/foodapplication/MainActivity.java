@@ -12,27 +12,27 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    // - - - - MENU - - -
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.example_menu, menu);
         return true;
     }
-
-    // - - - MENU - - -
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.item1:
-                Toast.makeText(this, "Item 1 selected", Toast.LENGTH_SHORT).show();
-                return true;
             case R.id.item2:
                 Intent ingredientsIntent = new Intent(MainActivity.this, IngredientsActivity.class);
                 startActivity(ingredientsIntent);
                 return true;
             case R.id.item3:
-                Intent recipeIntent = new Intent(MainActivity.this, RecipesPage.class);
+                Intent recipeIntent = new Intent(MainActivity.this, AddRecipePage.class);
                 startActivity(recipeIntent);
+                return true;
+            case R.id.item4:
+                Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(settingsIntent);
                 return true;
           /*  case R.id.subitem1:
                 Toast.makeText(this, "Sub Item 1 selected", Toast.LENGTH_SHORT).show();
