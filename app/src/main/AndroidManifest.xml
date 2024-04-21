@@ -74,5 +74,10 @@
             </intent-filter>
         </activity>
 
+        <!-- SettingsActivity -->
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="true" />
+
     </application>
 </manifest>

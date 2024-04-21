@@ -165,7 +165,7 @@ public class AddRecipePage extends AppCompatActivity {
             ingRemoveButton.setBackgroundColor(Color.rgb(255, 127, 127));
             ingRemoveButton.setText("X");
             ingRemoveButton.setLayoutParams(new LinearLayout.LayoutParams(100, 100));
-            ingRemoveButton.setBackgroundResource(R.drawable.login_box_ek2_shape);
+            ingRemoveButton.setBackgroundResource(R.drawable.button_color);
             oneIngredientLayout.addView(ingRemoveButton);
 
             //pridedama ingrediento eilute
