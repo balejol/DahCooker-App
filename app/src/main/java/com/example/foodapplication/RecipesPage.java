@@ -1,6 +1,8 @@
 package com.example.foodapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -75,7 +77,7 @@ public class RecipesPage extends AppCompatActivity
             oneRecipeLayout.setMinimumWidth(400);
             oneRecipeLayout.setGravity(Gravity.CENTER);
             oneRecipeLayout.setGravity(View.TEXT_ALIGNMENT_CENTER);
-            oneRecipeLayout.setBackgroundResource(R.drawable.button_color);
+            oneRecipeLayout.setBackgroundResource(R.drawable.box_shape_yellow);
             LayoutParams params = new LayoutParams(
                     LayoutParams.MATCH_PARENT,
                     LayoutParams.WRAP_CONTENT
@@ -130,6 +132,17 @@ public class RecipesPage extends AppCompatActivity
             ingRemoveButton.setLayoutParams(new LinearLayout.LayoutParams(300, 100));
             ingRemoveButton.setBackgroundResource(R.drawable.button_color);
             oneRecipeLayout.addView(ingRemoveButton);
+
+            //favorite button
+            Button ingFavouriteButton = new Button(getBaseContext());
+            ingFavouriteButton.setOnClickListener(FavouriteRecipe);
+            ingFavouriteButton.setBackgroundColor(Color.rgb(255, 127, 127));
+            ingFavouriteButton.setText("FAVOURITE");
+            ingFavouriteButton.setTextColor(Color.WHITE);
+            ingFavouriteButton.setGravity(Gravity.CENTER);
+            ingFavouriteButton.setLayoutParams(new LinearLayout.LayoutParams(300, 100));
+            ingFavouriteButton.setBackgroundResource(R.drawable.button_color);
+            oneRecipeLayout.addView(ingFavouriteButton);
 
             recipeLayout.addView(oneRecipeLayout);
         }
@@ -200,5 +213,28 @@ public class RecipesPage extends AppCompatActivity
             dialog.getWindow().setBackgroundDrawableResource(R.drawable.button_color);
         }
 
+    };
+
+    View.OnClickListener FavouriteRecipe = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View btt) {
+            LinearLayout recipes = (LinearLayout) findViewById((R.id.recipeListLayout));
+            LinearLayout recipeLine = (LinearLayout) btt.getParent();
+
+            if(btt.getBackground().getConstantState().
+                    equals(ContextCompat.getDrawable(RecipesPage.this, R.drawable.button_color).getConstantState()))
+            {
+                recipes.removeView(recipeLine);
+                recipes.addView(recipeLine, 0);
+                btt.setBackgroundColor(Color.MAGENTA);
+            }
+            else
+            {
+                recipes.removeView(recipeLine);
+                recipes.addView(recipeLine, recipes.getChildCount());
+                btt.setBackgroundResource(R.drawable.button_color);
+            }
+        }
     };
 }
