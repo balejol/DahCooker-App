@@ -17,6 +17,8 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.Toast;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -50,7 +52,7 @@ public class SettingsActivity extends AppCompatActivity {
     private MusicService musicService;
     private boolean isServiceBound = false;
 
-    //MediaPlayer musicPlayer;
+    private SharedPreferences sharedPreferences; // SharedPreferences object
 
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
@@ -72,32 +74,35 @@ public class SettingsActivity extends AppCompatActivity {
 
         Button backButton = findViewById(R.id.settBackButton); // Find the "recipeHistory" button by its ID
 
+        // Initialize SharedPreferences
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
         // Bind to MusicService
         Intent intent = new Intent(this, MusicService.class);
         bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
 
-        //musicPlayer=MediaPlayer.create(this,R.raw.aaa);
-        //musicPlayer.setLooping(true);
-
         Switch musicSwitch = findViewById(R.id.switch1);
-        musicSwitch.setChecked(true);
+
+        // Retrieve the saved state of the switch
+        musicSwitch.setChecked(sharedPreferences.getBoolean("music_switch_state", true));
+        //musicSwitch.setChecked(true);
 
         musicSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                // Save the state of the switch
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("music_switch_state", isChecked);
+                editor.apply();
 
                 if (isChecked)
                 {
-                    //musicPlayer.start();
-                    //playMusic();
                     if (musicService != null) {
                         musicService.startMusic();
                     }
                 }
                 else
                 {
-                    //musicPlayer.stop();
-                    //stopMusic();
                     if (musicService != null) {
                         musicService.stopMusic();
                     }
@@ -126,35 +131,4 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
-    /*
-    private MediaPlayer createMediaPlayer() {
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.aaa);
-        mediaPlayer.setLooping(true);
-        return mediaPlayer;
-    }
-
-    private void playMusic() {
-        if (musicPlayer == null) {
-            musicPlayer = createMediaPlayer();
-        }
-        musicPlayer.start();
-    }
-
-    private void stopMusic() {
-        if (musicPlayer != null) {
-            musicPlayer.stop();
-            musicPlayer.release();
-            musicPlayer = null;
-        }
-    }
-
-    private MediaPlayer musicPlayer;
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        stopMusic();
-    }
-
-     */
 }
