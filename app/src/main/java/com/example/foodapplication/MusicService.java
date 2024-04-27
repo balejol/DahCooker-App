@@ -5,11 +5,15 @@ import android.media.MediaPlayer;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 public class MusicService extends Service {
 
     private MediaPlayer mediaPlayer;
     private final IBinder binder = new MusicBinder();
+
+    private SharedPreferences sharedPreferences;
 
     public class MusicBinder extends Binder {
         MusicService getService() {
@@ -29,7 +33,17 @@ public class MusicService extends Service {
         mediaPlayer = MediaPlayer.create(this, R.raw.picosmuzika);
         mediaPlayer.setLooping(true);
 
-        startMusic(); //sitas padaro kad iskart grotu po to kai zinosiu kjp issaugot values reikes sita pataisyt
+        //startMusic(); //sitas padaro kad iskart grotu po to kai zinosiu kjp issaugot values reikes sita pataisyt
+
+        // Initialize SharedPreferences
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        // Check the saved state of the switch
+        boolean isMusicSwitchOn = sharedPreferences.getBoolean("music_switch_state", true);
+
+        if (isMusicSwitchOn) {
+            startMusic();
+        }
     }
 
     public void startMusic() {

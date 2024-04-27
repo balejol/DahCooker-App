@@ -31,6 +31,12 @@ public class SettingsActivity extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        //paleidzia sfx
+        if (mediaPlayer != null) {
+            mediaPlayer.start();
+        }
+
         switch (item.getItemId()) {
             case R.id.item1:
                 Intent mainIntent = new Intent(SettingsActivity.this, MainActivity.class);
@@ -49,6 +55,7 @@ public class SettingsActivity extends AppCompatActivity {
         }
     };
 
+    private MediaPlayer mediaPlayer;
     private MusicService musicService;
     private boolean isServiceBound = false;
 
@@ -71,6 +78,9 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        // Initialize MediaPlayer with your sound file
+        mediaPlayer = MediaPlayer.create(this, R.raw.temp);
 
         Button backButton = findViewById(R.id.settBackButton); // Find the "recipeHistory" button by its ID
 
@@ -110,15 +120,16 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (mediaPlayer != null) {
+                    mediaPlayer.start();
+                }
                 Intent intent = new Intent(getBaseContext(), MainActivity.class);
                 startActivity(intent);
             }
         });
-
 
     }
 
@@ -128,6 +139,11 @@ public class SettingsActivity extends AppCompatActivity {
         if (isServiceBound) {
             unbindService(serviceConnection);
             isServiceBound = false;
+        }
+        // Release the MediaPlayer resources
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
         }
     }
 

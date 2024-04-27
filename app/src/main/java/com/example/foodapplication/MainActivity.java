@@ -2,6 +2,7 @@ package com.example.foodapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    private MediaPlayer mediaPlayer;
     // - - - - MENU - - -
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -21,6 +23,10 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        //paleidzia sfx
+        if (mediaPlayer != null) {
+            mediaPlayer.start();
+        }
         switch (item.getItemId()) {
             case R.id.item2:
                 Intent ingredientsIntent = new Intent(MainActivity.this, IngredientsActivity.class);
@@ -51,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mediaPlayer = MediaPlayer.create(this, R.raw.temp);
+
         Intent intent = new Intent(this, MusicService.class);
         startService(intent);
 
@@ -71,5 +79,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Release the MediaPlayer resources
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
     }
 }
