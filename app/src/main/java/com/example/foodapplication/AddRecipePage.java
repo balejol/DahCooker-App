@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
@@ -40,6 +41,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class AddRecipePage extends AppCompatActivity {
 
+    private MediaPlayer mediaPlayer;
+    private MediaPlayer cancleClick;
     // - - - - MENU - - -
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -49,6 +52,12 @@ public class AddRecipePage extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        //paleidzia sfx
+        if (mediaPlayer != null) {
+            mediaPlayer.start();
+        }
+
         switch (item.getItemId()) {
             case R.id.item1:
                 Intent mainIntent = new Intent(AddRecipePage.this, MainActivity.class);
@@ -87,6 +96,9 @@ public class AddRecipePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_recipe);
 
+        mediaPlayer = MediaPlayer.create(this, R.raw.buttonclick);
+        cancleClick = MediaPlayer.create(this, R.raw.cancleclickf);
+
         //database
         //FirebaseApp.initializeApp(this);
         //database = FirebaseDatabase.getInstance();
@@ -116,6 +128,10 @@ public class AddRecipePage extends AppCompatActivity {
         {
 /*            if(RecipesList.GetN() != 0)
                 RecipesList.Remove(RecipesList.GetN() - 1);*/
+            //paleidzia sfx
+            if (cancleClick != null) {
+                cancleClick.start();
+            }
             Intent intent = new Intent(getBaseContext(), RecipesPage.class);
             startActivity(intent);
         }
@@ -127,6 +143,11 @@ public class AddRecipePage extends AppCompatActivity {
         public void onClick(View v) {
             //HorizontalScrollView ingredientLayoutScrollable = (HorizontalScrollView)
             //        findViewById(R.id.ingredientLayoutScroll);
+
+            //paleidzia sfx
+            if (mediaPlayer != null) {
+                mediaPlayer.start();
+            }
 
             //visu ingredientu sarasas
             LinearLayout ingredientLayout = (LinearLayout)
@@ -198,6 +219,11 @@ public class AddRecipePage extends AppCompatActivity {
         @Override
         public void onClick(View btt)
         {
+            //paleidzia sfx
+            if (cancleClick != null) {
+                cancleClick.start();
+            }
+
             LinearLayout ingredients = (LinearLayout) findViewById((R.id.ingredientLayout));
             LinearLayout ingredientLine = (LinearLayout) btt.getParent();
             ingredients.removeView(ingredientLine);
@@ -208,6 +234,11 @@ public class AddRecipePage extends AppCompatActivity {
         @Override
         public void onClick(View view)
         {
+            //paleidzia sfx
+            if (mediaPlayer != null) {
+                mediaPlayer.start();
+            }
+
             String recipeName = et_recipeName.getText().toString();
             List<Ingredient> IngredientList = new ArrayList<>();
 

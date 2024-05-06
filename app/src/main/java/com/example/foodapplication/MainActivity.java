@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mediaPlayer = MediaPlayer.create(this, R.raw.temp);
+        mediaPlayer = MediaPlayer.create(this, R.raw.buttonclick);
 
         Intent intent = new Intent(this, MusicService.class);
         startService(intent);
@@ -66,6 +66,10 @@ public class MainActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //paleidzia sfx
+                if (mediaPlayer != null) {
+                    mediaPlayer.start();
+                }
                 Intent intent = new Intent(MainActivity.this, IngredientsActivity.class);
                 startActivity(intent);
             }
@@ -75,6 +79,11 @@ public class MainActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //paleidzia sfx
+                if (mediaPlayer != null) {
+                    mediaPlayer.start();
+                }
+
                 Intent intent = new Intent(MainActivity.this, RecipesPage.class);
                 startActivity(intent);
             }

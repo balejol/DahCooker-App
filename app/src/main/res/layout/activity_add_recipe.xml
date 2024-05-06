@@ -97,12 +97,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="30dp"
+                android:background="@drawable/button_color"
                 android:text="Add ingredient"
+                app:icon="@android:drawable/ic_input_add"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:background="@drawable/button_color"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -220,14 +221,15 @@
         android:id="@+id/createRecipeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_color"
         android:text="Create new recipe"
+        app:icon="@android:drawable/ic_input_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.81"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95"
-        android:background="@drawable/button_color"/>
+        app:layout_constraintVertical_bias="0.95" />
 
     <Button
         android:id="@+id/cancelCreateRecipeButton"

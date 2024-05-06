@@ -24,6 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.LinearLayout.LayoutParams;
+import android.media.MediaPlayer;
 
 import java.util.ArrayList;
 public class RecipesPage extends AppCompatActivity
@@ -36,6 +37,10 @@ public class RecipesPage extends AppCompatActivity
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        //paleidzia sfx
+        if (mediaPlayer != null) {
+            mediaPlayer.start();
+        }
         switch (item.getItemId()) {
             case R.id.item1:
                 Toast.makeText(this, "Item 1 selected", Toast.LENGTH_SHORT).show();
@@ -47,6 +52,9 @@ public class RecipesPage extends AppCompatActivity
             case R.id.item3:
                 Intent recipeIntent = new Intent(RecipesPage.this, RecipesPage.class);
                 startActivity(recipeIntent);
+            case R.id.item4:
+                Intent settingsIntent = new Intent(RecipesPage.this, SettingsActivity.class);
+                startActivity(settingsIntent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -56,6 +64,11 @@ public class RecipesPage extends AppCompatActivity
     Button _button;
     Button backButton;
 
+    private MediaPlayer mediaPlayer;
+
+    private MediaPlayer cancleClick;
+
+
     //Receptų sąrašas
     public static Recipes RecipesList = new Recipes();
 
@@ -64,6 +77,9 @@ public class RecipesPage extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipes);
+
+        mediaPlayer = MediaPlayer.create(this, R.raw.buttonclick);
+        cancleClick = MediaPlayer.create(this, R.raw.cancleclickf);
 
         _button = (Button) findViewById(R.id.button);
         backButton = (Button) findViewById(R.id.backButtonRecipes);
@@ -167,6 +183,10 @@ public class RecipesPage extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
+                //paleidzia sfx
+                if (mediaPlayer != null) {
+                    mediaPlayer.start();
+                }
                 Intent intent = new Intent(getBaseContext(), MainActivity.class);
                 startActivity(intent);
             }
@@ -177,6 +197,10 @@ public class RecipesPage extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
+                //paleidzia sfx
+                if (mediaPlayer != null) {
+                    mediaPlayer.start();
+                }
                 Intent intent = new Intent(getBaseContext(), AddRecipePage.class);
                 //intent.putExtra("Data", "Please enter information about a recipe");
                 startActivity(intent);
@@ -189,12 +213,21 @@ public class RecipesPage extends AppCompatActivity
         @Override
         public void onClick(View btt)
         {
+            //paleidzia sfx
+            if (mediaPlayer != null) {
+                mediaPlayer.start();
+            }
             AlertDialog dialog = new AlertDialog.Builder(RecipesPage.this)
                     .setTitle("Confirmation")
                     .setMessage("Are you sure you want to remove this recipe?")
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                         public void onClick(DialogInterface dialog, int whichButton) {
+
+                            //paleidzia sfx
+                            if (cancleClick != null) {
+                                cancleClick.start();
+                            }
                             Toast.makeText(RecipesPage.this, "Recipe removed", Toast.LENGTH_SHORT).show();
                             LinearLayout recipes = (LinearLayout) findViewById((R.id.recipeListLayout));
                             LinearLayout recipeLine = (LinearLayout) btt.getParent();
@@ -219,6 +252,10 @@ public class RecipesPage extends AppCompatActivity
 
         @Override
         public void onClick(View btt) {
+            //paleidzia sfx
+            if (mediaPlayer != null) {
+                mediaPlayer.start();
+            }
             LinearLayout recipes = (LinearLayout) findViewById((R.id.recipeListLayout));
             LinearLayout recipeLine = (LinearLayout) btt.getParent();
 

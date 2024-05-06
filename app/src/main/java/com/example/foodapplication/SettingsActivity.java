@@ -80,7 +80,7 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         // Initialize MediaPlayer with your sound file
-        mediaPlayer = MediaPlayer.create(this, R.raw.temp);
+        mediaPlayer = MediaPlayer.create(this, R.raw.buttonclick);
 
         Button backButton = findViewById(R.id.settBackButton); // Find the "recipeHistory" button by its ID
 
@@ -104,6 +104,11 @@ public class SettingsActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean("music_switch_state", isChecked);
                 editor.apply();
+
+                //paleidzia sfx
+                if (mediaPlayer != null) {
+                    mediaPlayer.start();
+                }
 
                 if (isChecked)
                 {

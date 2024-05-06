@@ -117,7 +117,8 @@
                             android:layout_marginStart="0dp"
                             android:layout_marginTop="1dp"
                             android:background="@drawable/button_color"
-                            android:text="Add recipe" />
+                            android:text="Add recipe"
+                            app:icon="@android:drawable/ic_input_add" />
                     </RelativeLayout>
 
                     <!-- INGREDIENTS BUTTON -->
