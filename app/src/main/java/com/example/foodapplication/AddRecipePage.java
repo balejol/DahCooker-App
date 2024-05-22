@@ -4,12 +4,21 @@ import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static com.example.foodapplication.RecipesPage.RecipesList;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
@@ -72,12 +81,17 @@ public class AddRecipePage extends AppCompatActivity {
     Button bt_cancelCreateRecipe;
     Button bt_createRecipe;
     Button bt_addIngredient;
+    Button bt_pickImage;
+    Button bt_removeImage;
     EditText et_recipeName;
     EditText et_preparation;
     EditText et_notes;
     //String recipeName;
+    ImageView iw_recipeImagePreview;
     ArrayList<Ingredient> Ingredients;
-    private static final String[] measurements = new String[]{"unit", "l", "ml", "g", "mg", "tsp", "tbsp"};
+    ActivityResultLauncher<Intent> imageResultLauncher;
+    Boolean ImageSelected = false;
+    private static final String[] measurements = new String[]{"-", "unit", "l", "ml", "kg", "g", "mg", "tsp", "tbsp"};
 
     int id = 0;
 
@@ -100,13 +114,50 @@ public class AddRecipePage extends AppCompatActivity {
         bt_cancelCreateRecipe = (Button) findViewById(R.id.cancelCreateRecipeButton);
         bt_createRecipe = (Button) findViewById((R.id.createRecipeButton));
         bt_addIngredient = (Button) findViewById((R.id.addIngredient));
+        bt_pickImage = (Button) findViewById(R.id.pickAnImageButton);
+        bt_removeImage = (Button) findViewById((R.id.removeAnImageButton));
+        //randami edit text
         et_notes = (EditText) findViewById(R.id.notesField);
         et_preparation = (EditText) findViewById(R.id.preparationField);
+        //randamas imageview
+        iw_recipeImagePreview = (ImageView) findViewById(R.id.RecipeImage);
+        RegisterImageResult();
         //metodai
         bt_cancelCreateRecipe.setOnClickListener(Cancel);
         //et_recipeName.addTextChangedListener(InsertRecipeNameTextWatcher);
         bt_createRecipe.setOnClickListener(SaveRecipeOnClick);
         bt_addIngredient.setOnClickListener(AddIngredientField);
+        bt_pickImage.setOnClickListener(view -> PickAnImage());
+        bt_removeImage.setOnClickListener(view -> RemoveImage());
+    }
+
+    private void RemoveImage(){
+        iw_recipeImagePreview.setImageResource(R.drawable.recipe_photo_placeolder);
+        bt_removeImage.setVisibility(View.INVISIBLE);
+        ImageSelected = false;
+    }
+    private void PickAnImage() {
+        Intent intent = new Intent(MediaStore.ACTION_PICK_IMAGES);
+        imageResultLauncher.launch(intent);
+    }
+    private void RegisterImageResult(){
+       imageResultLauncher = registerForActivityResult(
+               new ActivityResultContracts.StartActivityForResult(),
+               new ActivityResultCallback<ActivityResult>() {
+                   @Override
+                   public void onActivityResult(ActivityResult o) {
+                       try{
+                           Uri imageUri = o.getData().getData();
+                           iw_recipeImagePreview.setImageURI(imageUri);
+                           bt_removeImage.setVisibility(View.VISIBLE);
+                           ImageSelected = true;
+                       }
+                       catch(Exception e){
+                           Toast.makeText(AddRecipePage.this, "No image is selected", Toast.LENGTH_SHORT).show();
+                       }
+                   }
+               }
+       );
     }
 
     View.OnClickListener Cancel = new View.OnClickListener()
@@ -209,40 +260,85 @@ public class AddRecipePage extends AppCompatActivity {
         public void onClick(View view)
         {
             String recipeName = et_recipeName.getText().toString();
+            String preparationText = et_preparation.getText().toString();
+            String notesText = et_notes.getText().toString();
+            Bitmap image = ((BitmapDrawable)iw_recipeImagePreview.getDrawable()).getBitmap();
+
             List<Ingredient> IngredientList = new ArrayList<>();
 
             LinearLayout ingredientsLayout = (LinearLayout) findViewById((R.id.ingredientLayout));
 
+            //jei repepto pavadinimo laukas tuščias
+            if(recipeName.equals(""))
+            {
+                Toast.makeText(AddRecipePage.this, "Please enter recipe name", Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            //jei nėra ingridientų laukų
+            if(ingredientsLayout.getChildCount() == 0)
+            {
+                Toast.makeText(AddRecipePage.this, "Please enter information about ingredients", Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            //jei yra ingredientų laukai
             for(int i = 0; i < ingredientsLayout.getChildCount(); i++)
             {
+                //paimamas layout kuris laiko ingredientų layout'us atitinkamą ingrediento layout'ą
                 LinearLayout oneIngredientLayout = (LinearLayout) ingredientsLayout.getChildAt(i);
+                //paimamas ingrediento vardas, kiekis ir matavimo vienetus
                 EditText et_ingredientName = (EditText) oneIngredientLayout.getChildAt(0);
                 EditText et_ingredientAmount = (EditText) oneIngredientLayout.getChildAt(1);
                 Spinner sp_ingredientMeasurement = (Spinner) oneIngredientLayout.getChildAt(2);
 
-                if(!(et_ingredientName.getText().toString().equals("")) ||
-                        !(et_ingredientAmount.getText().toString().equals("")))
+                //jei bent vieno ingrediento pavadinimo langas tuščias
+                if(et_ingredientName.getText().toString().equals(""))
                 {
-                    String ingredientName = et_ingredientName.getText().toString();
-                    String ingredientAmount = et_ingredientAmount.getText().toString();
-                    String ingredientMeasurement = sp_ingredientMeasurement.getSelectedItem().toString();
-
-                    Ingredient temporaryIngredient = new Ingredient(
-                            ingredientName,
-                            Double.parseDouble(ingredientAmount),
-                            ingredientMeasurement);
-
-                    IngredientList.add(temporaryIngredient);
+                    Toast.makeText(AddRecipePage.this, "Please enter ingredient name", Toast.LENGTH_LONG).show();
+                    return;
                 }
+
+                //jei bent vieno ingrediento dydžio kiekis tuščias
+                if(et_ingredientAmount.getText().toString().equals(""))
+                {
+                    Toast.makeText(AddRecipePage.this, "Please enter ingredient amount", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                //jei bent vieno ingrediento matavimo vienetai nepasirinkti
+                if(sp_ingredientMeasurement.getSelectedItem().equals("-"))
+                {
+                    Toast.makeText(AddRecipePage.this, "Please choose ingredient measurements", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                String ingredientName = et_ingredientName.getText().toString();
+                String ingredientAmount = et_ingredientAmount.getText().toString();
+                String ingredientMeasurement = sp_ingredientMeasurement.getSelectedItem().toString();
+
+                Ingredient temporaryIngredient = new Ingredient(
+                        ingredientName,
+                        Double.parseDouble(ingredientAmount),
+                        ingredientMeasurement);
+
+                IngredientList.add(temporaryIngredient);
+            }
+
+            //jei nepasirinktas paveikslėlis
+            if(ImageSelected == false)
+            {
+                Toast.makeText(AddRecipePage.this, "Please select image", Toast.LENGTH_LONG).show();
+                return;
             }
 
             boolean exist = false;
 
             for(int j = 0; j < RecipesList.GetN(); j++)
             {
-                if(recipeName == RecipesList.GetName(j))
+                if(recipeName.equals(RecipesList.GetName(j)))
                 {
-                    Toast.makeText(AddRecipePage.this, "Such name already exist.",
+                    Toast.makeText(AddRecipePage.this, "Such recipe name already exist.",
                             Toast.LENGTH_SHORT).show();
                     exist = true;
                 }
@@ -252,18 +348,22 @@ public class AddRecipePage extends AppCompatActivity {
             {
                 if(IngredientList.size() > 0 && recipeName != null)
                 {
-                    Toast.makeText(AddRecipePage.this, "Recipe added.",
-                            Toast.LENGTH_SHORT).show();
-                    Recipe recipe = new Recipe();
-                    recipe.AddRecipe(recipeName, IngredientList);
 
+                    Recipe recipe = new Recipe();
+                    recipe.AddRecipe(recipeName, IngredientList, preparationText, notesText, image);
                     RecipesList.AddRecipe(recipe);
+
+                    //nuvedama i receptų puslapį
                     Intent intent = new Intent(getBaseContext(), RecipesPage.class);
                     startActivity(intent);
+
+                    Toast.makeText(AddRecipePage.this, "Recipe added.",
+                            Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Toast.makeText(AddRecipePage.this, "Failed to add recipe. Check name and ingredients.",
+                    Toast.makeText(AddRecipePage.this, "Failed to add recipe.",
                             Toast.LENGTH_SHORT).show();
+                    return;
                 }
             }
         }

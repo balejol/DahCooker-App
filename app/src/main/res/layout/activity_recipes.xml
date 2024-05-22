@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RecipesPage"
-    android:background="@drawable/button_color">
+    android:background="@drawable/_bg_color_nude">
 
     <Button
         android:id="@+id/button"
@@ -24,7 +24,7 @@
         android:id="@+id/recipeListLayout"
         android:layout_width="380dp"
         android:layout_height="580dp"
-        android:background="@drawable/button_color"
+        android:background="@drawable/write_shape_white"
         android:orientation="vertical"
         android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -48,7 +48,8 @@
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95"/>
+        app:layout_constraintVertical_bias="0.95"
+        android:background="@drawable/button_color"/>
 
     <TextView
         android:id="@+id/textView5"
