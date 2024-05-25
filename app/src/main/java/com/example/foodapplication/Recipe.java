@@ -25,13 +25,37 @@ public class Recipe
     }
 
     public String GetRecipeName(){return recipeName;}
+    public Bitmap GetRecipeImage(){return image;}
+    public String GetRecipePreparation(){return preparation;}
+    public String GetRecipeNotes(){return notes;}
+    public Boolean IsFavorite(){return isFavorite;}
     public Ingredient GetIngredient(int i){return Ingredients.get(i);}
     public int GetAmountOfIngredients(){return Ingredients.size();}
+
+    public void IsFavorite(Boolean isFav)
+    {
+        isFavorite = isFav;
+    }
 
     public void AddRecipe(String name, List<Ingredient> ingr, String prep, String note, Bitmap img)
     {
         recipeName = name;
 
+        for(int i = 0; i < ingr.size(); i++)
+        {
+            Ingredients.add(ingr.get(i));
+        }
+
+        preparation = prep;
+        notes = note;
+        image = img;
+    }
+
+    public void ChangeRecipe(String name, List<Ingredient> ingr, String prep, String note, Bitmap img)
+    {
+        recipeName = name;
+
+        Ingredients.clear();
         for(int i = 0; i < ingr.size(); i++)
         {
             Ingredients.add(ingr.get(i));
