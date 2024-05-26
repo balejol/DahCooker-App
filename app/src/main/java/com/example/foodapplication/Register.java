@@ -22,6 +22,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import android.media.MediaPlayer;
 
 public class Register extends AppCompatActivity {
 
@@ -38,7 +39,9 @@ public class Register extends AppCompatActivity {
         });
     } */
 
-
+    private MediaPlayer mediaPlayer;
+    private MediaPlayer cancelSFX;
+    private MediaPlayer favSFX;
     TextInputEditText editTextEmail, editTextPassword; Button buttonReg;
     FirebaseAuth mAuth;
     ProgressBar progressBar;
@@ -61,6 +64,11 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_register);
+
+        mediaPlayer = MediaPlayer.create(this, R.raw.buttonclick);
+        cancelSFX = MediaPlayer.create(this, R.raw.cancleclickf);
+        favSFX = MediaPlayer.create(this, R.raw.favsound);
+
         mAuth = FirebaseAuth.getInstance();
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
@@ -70,6 +78,10 @@ public class Register extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //paleidzia sfx
+                if (mediaPlayer != null) {
+                    mediaPlayer.start();
+                }
                 Intent intent = new  Intent(getApplicationContext(), Login.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -80,6 +92,10 @@ public class Register extends AppCompatActivity {
         buttonReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //paleidzia sfx
+                if (mediaPlayer != null) {
+                    mediaPlayer.start();
+                }
                 progressBar.setVisibility(View.VISIBLE);
                 String email, password;
                 email = String.valueOf(editTextEmail.getText());
@@ -102,6 +118,10 @@ public class Register extends AppCompatActivity {
                                 progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
 
+                                    //paleidzia sfx
+                                    if (favSFX != null) {
+                                        favSFX.start();
+                                    }
                                     Toast.makeText(Register.this, "Account created.",
                                             Toast.LENGTH_SHORT).show();
                                         Intent intent = new  Intent(getApplicationContext(), Login.class);
@@ -109,6 +129,10 @@ public class Register extends AppCompatActivity {
                                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                                         finish();
                                 } else {
+                                    //paleidzia sfx
+                                    if (cancelSFX != null) {
+                                        cancelSFX.start();
+                                    }
                                     // If sign in fails, display a message to the user.
                                     Toast.makeText(Register.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();

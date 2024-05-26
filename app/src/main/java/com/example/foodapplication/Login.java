@@ -22,6 +22,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import android.media.MediaPlayer;
 
 public class Login extends AppCompatActivity {
 
@@ -37,6 +38,9 @@ public class Login extends AppCompatActivity {
         });
     }*/
 
+    private MediaPlayer mediaPlayer;
+    private MediaPlayer cancelSFX;
+    private MediaPlayer favSFX;
     TextInputEditText editTextEmail, editTextPassword; Button buttonLogin;
     FirebaseAuth mAuth;
     ProgressBar progressBar;
@@ -61,6 +65,10 @@ public class Login extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
 
+        mediaPlayer = MediaPlayer.create(this, R.raw.buttonclick);
+        cancelSFX = MediaPlayer.create(this, R.raw.cancleclickf);
+        favSFX = MediaPlayer.create(this, R.raw.favsound);
+
         mAuth = FirebaseAuth.getInstance();
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
@@ -70,6 +78,10 @@ public class Login extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //paleidzia sfx
+                if (mediaPlayer != null) {
+                    mediaPlayer.start();
+                }
                 Intent intent = new  Intent(getApplicationContext(), Register.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -80,6 +92,10 @@ public class Login extends AppCompatActivity {
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //paleidzia sfx
+                if (mediaPlayer != null) {
+                    mediaPlayer.start();
+                }
                 progressBar.setVisibility(View.VISIBLE);
                 String email, password;
                 email = String.valueOf(editTextEmail.getText());
@@ -101,12 +117,21 @@ public class Login extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
+
+                                    //paleidzia sfx
+                                    if (favSFX != null) {
+                                        favSFX.start();
+                                    }
                                     Toast.makeText(getApplicationContext(),"Login Successful", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                     startActivity(intent);
                                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                                     finish();
                                 } else {
+                                    //paleidzia sfx
+                                    if (cancelSFX != null) {
+                                        cancelSFX.start();
+                                    }
                                     Toast.makeText(Login.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
                                 }
