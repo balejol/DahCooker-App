@@ -78,7 +78,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="120dp"
         android:visibility="gone"
-        android:text="Opps we see there are no saved recipes. \n try adding a new recipe"
+        android:text="Oops, there are no saved recipes. \n Try adding a new recipe"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
