@@ -41,14 +41,17 @@ public class SettingsActivity extends AppCompatActivity {
             case R.id.item1:
                 Intent mainIntent = new Intent(SettingsActivity.this, MainActivity.class);
                 startActivity(mainIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             case R.id.item2:
                 Intent recipeIntent = new Intent(SettingsActivity.this, IngredientsActivity.class);
                 startActivity(recipeIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             case R.id.item3:
                 Intent settingsIntent = new Intent(SettingsActivity.this, AddRecipePage.class);
                 startActivity(settingsIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -133,6 +136,7 @@ public class SettingsActivity extends AppCompatActivity {
                 }
                 Intent intent = new Intent(getBaseContext(), MainActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 

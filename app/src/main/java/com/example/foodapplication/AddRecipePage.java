@@ -62,14 +62,17 @@ public class AddRecipePage extends AppCompatActivity {
             case R.id.item1:
                 Intent mainIntent = new Intent(AddRecipePage.this, MainActivity.class);
                 startActivity(mainIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             case R.id.item2:
                 Intent recipeIntent = new Intent(AddRecipePage.this, IngredientsActivity.class);
                 startActivity(recipeIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             case R.id.item4:
                 Intent settingsIntent = new Intent(AddRecipePage.this, SettingsActivity.class);
                 startActivity(settingsIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -134,6 +137,7 @@ public class AddRecipePage extends AppCompatActivity {
             }
             Intent intent = new Intent(getBaseContext(), RecipesPage.class);
             startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
     };
 
@@ -291,6 +295,7 @@ public class AddRecipePage extends AppCompatActivity {
                     RecipesList.AddRecipe(recipe);
                     Intent intent = new Intent(getBaseContext(), RecipesPage.class);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 }
                 else {
                     Toast.makeText(AddRecipePage.this, "Failed to add recipe. Check name and ingredients.",

@@ -35,6 +35,7 @@ public class LoginActivity extends Activity {
 						write_password.getText().toString())) {
 					Intent intent = new Intent(getBaseContext(), MainActivity.class);
 					startActivity(intent);
+					overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 				} else {
 					_showingError.setVisibility(View.VISIBLE);
 				}
@@ -46,6 +47,7 @@ public class LoginActivity extends Activity {
 			public void onClick(View view) {
 				Intent intent = new Intent(getBaseContext(), RegistrationActivity.class);
 				startActivity(intent);
+				overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 			}
 		});
 	}

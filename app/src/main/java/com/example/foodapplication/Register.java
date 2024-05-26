@@ -51,6 +51,7 @@ public class Register extends AppCompatActivity {
         if(currentUser != null){
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             finish();
         }
     }
@@ -71,6 +72,7 @@ public class Register extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new  Intent(getApplicationContext(), Login.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
             }
         });
@@ -104,6 +106,7 @@ public class Register extends AppCompatActivity {
                                             Toast.LENGTH_SHORT).show();
                                         Intent intent = new  Intent(getApplicationContext(), Login.class);
                                         startActivity(intent);
+                                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                                         finish();
                                 } else {
                                     // If sign in fails, display a message to the user.

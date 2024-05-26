@@ -38,14 +38,17 @@ public class IngredientsActivity extends AppCompatActivity {
             case R.id.item1:
                 Intent mainIntent = new Intent(IngredientsActivity.this, MainActivity.class);
                 startActivity(mainIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             case R.id.item3:
                 Intent recipeIntent = new Intent(IngredientsActivity.this, AddRecipePage.class);
                 startActivity(recipeIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             case R.id.item4:
                 Intent settingsIntent = new Intent(IngredientsActivity.this, SettingsActivity.class);
                 startActivity(settingsIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

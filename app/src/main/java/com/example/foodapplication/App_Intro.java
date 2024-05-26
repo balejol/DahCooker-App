@@ -17,6 +17,7 @@ public class App_Intro extends AppCompatActivity {
             @Override
             public void run() {
                 startActivity(new Intent(App_Intro.this, MainActivity.class)); //Pakeisim veliau i reikiama pradini ekrana
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
             }
         }, 3000);
