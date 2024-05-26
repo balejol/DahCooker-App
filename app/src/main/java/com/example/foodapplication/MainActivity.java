@@ -31,14 +31,17 @@ public class MainActivity extends AppCompatActivity {
             case R.id.item2:
                 Intent ingredientsIntent = new Intent(MainActivity.this, IngredientsActivity.class);
                 startActivity(ingredientsIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             case R.id.item3:
                 Intent recipeIntent = new Intent(MainActivity.this, AddRecipePage.class);
                 startActivity(recipeIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             case R.id.item4:
                 Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(settingsIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
           /*  case R.id.subitem1:
                 Toast.makeText(this, "Sub Item 1 selected", Toast.LENGTH_SHORT).show();
