@@ -2,6 +2,7 @@ package com.example.foodapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    private MediaPlayer mediaPlayer;
     // - - - - MENU - - -
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -21,18 +23,25 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        //paleidzia sfx
+        if (mediaPlayer != null) {
+            mediaPlayer.start();
+        }
         switch (item.getItemId()) {
             case R.id.item2:
                 Intent ingredientsIntent = new Intent(MainActivity.this, IngredientsActivity.class);
                 startActivity(ingredientsIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             case R.id.item3:
                 Intent recipeIntent = new Intent(MainActivity.this, AddRecipePage.class);
                 startActivity(recipeIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             case R.id.item4:
                 Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(settingsIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
           /*  case R.id.subitem1:
                 Toast.makeText(this, "Sub Item 1 selected", Toast.LENGTH_SHORT).show();
@@ -51,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mediaPlayer = MediaPlayer.create(this, R.raw.buttonclick);
+
         Intent intent = new Intent(this, MusicService.class);
         startService(intent);
 
@@ -58,8 +69,14 @@ public class MainActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //paleidzia sfx
+                if (mediaPlayer != null) {
+                    mediaPlayer.start();
+                }
                 Intent intent = new Intent(MainActivity.this, IngredientsActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
             }
         });
 
@@ -67,9 +84,25 @@ public class MainActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //paleidzia sfx
+                if (mediaPlayer != null) {
+                    mediaPlayer.start();
+                }
+
                 Intent intent = new Intent(MainActivity.this, RecipesPage.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Release the MediaPlayer resources
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
     }
 }

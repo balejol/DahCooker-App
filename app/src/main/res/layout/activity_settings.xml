@@ -17,7 +17,7 @@
         android:text="Back"
         android:textAllCaps="true"
         android:textColor="@color/_bg__login_ek2_color"
-        app:icon="@android:drawable/ic_media_rew"
+        app:icon="?attr/actionModeCloseDrawable"
         app:iconTint="@color/_bg__login_ek2_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

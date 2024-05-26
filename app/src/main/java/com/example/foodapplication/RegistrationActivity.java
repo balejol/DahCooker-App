@@ -70,6 +70,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
             Intent intent = new Intent(getBaseContext(), LoginActivity.class);
             startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
 }

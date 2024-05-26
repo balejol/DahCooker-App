@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RecipesPage"
+    tools:context=".FavoriteRecipesPage"
     android:background="@drawable/_bg_color_nude">
 
     <ScrollView
@@ -55,20 +55,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.95" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_color"
-        android:text="Add recipe"
-        app:icon="@android:drawable/ic_input_add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95" />
-
     <TextView
         android:id="@+id/oops"
         android:layout_width="match_parent"
@@ -78,7 +64,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="120dp"
         android:visibility="gone"
-        android:text="Oops, there are no saved recipes. \n Try adding a new recipe"
+        android:text="Oops you have no favorites recipes."
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

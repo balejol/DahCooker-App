@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
+import android.media.MediaPlayer;
 
 public class IngredientsActivity extends AppCompatActivity {
 
@@ -27,18 +28,27 @@ public class IngredientsActivity extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        //paleidzia sfx
+        if (mediaPlayer != null) {
+            mediaPlayer.start();
+        }
+
         switch (item.getItemId()) {
             case R.id.item1:
                 Intent mainIntent = new Intent(IngredientsActivity.this, MainActivity.class);
                 startActivity(mainIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             case R.id.item3:
                 Intent recipeIntent = new Intent(IngredientsActivity.this, AddRecipePage.class);
                 startActivity(recipeIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             case R.id.item4:
                 Intent settingsIntent = new Intent(IngredientsActivity.this, SettingsActivity.class);
                 startActivity(settingsIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -46,12 +56,15 @@ public class IngredientsActivity extends AppCompatActivity {
     };
 
 
+    private MediaPlayer mediaPlayer;
     private ArrayList<IngredientItem> ingredientList;
     private IngredientsAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingredients);
+
+        mediaPlayer = MediaPlayer.create(this, R.raw.buttonclick);
 
         ingredientList = new ArrayList<>();
         ingredientList.add(new IngredientItem("Vištiena", 0));
@@ -82,6 +95,10 @@ public class IngredientsActivity extends AppCompatActivity {
         builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                //paleidzia sfx
+                if (mediaPlayer != null) {
+                    mediaPlayer.start();
+                }
                 String ingredientName = editTextIngredientName.getText().toString().trim();
                 String quantityString = editTextIngredientQuantity.getText().toString().trim();
 
@@ -105,6 +122,10 @@ public class IngredientsActivity extends AppCompatActivity {
 
     public void onProceedClicked(View view) {
 
+        //paleidzia sfx
+        if (mediaPlayer != null) {
+            mediaPlayer.start();
+        }
         for (int i = 0; i < ingredientList.size(); i++) {
             int quantity = adapter.getQuantity(i);
             ingredientList.get(i).setQuantity(quantity);

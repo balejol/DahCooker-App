@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/_bg_color_nude"
-    tools:context=".AddRecipePage">
-
+    tools:context=".EditRecipePage"
+    android:background="@drawable/_bg_color_nude">
 
     <ScrollView
         android:id="@+id/scroll"
@@ -37,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:text="Please enter recipe ingredients"
+                android:text="Recipe name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -95,7 +93,7 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Please describe preparation steps"
+                android:text="Preparation steps"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.501"
@@ -127,7 +125,7 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="If needed, write notes"
+                android:text="Notes"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.501"
@@ -159,7 +157,7 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Choose a photo of your recipe"
+                android:text="Recipe photo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.501"
@@ -243,7 +241,7 @@
                     app:layout_constraintVertical_bias="0.0" />
 
                 <Button
-                    android:id="@+id/createRecipeButton"
+                    android:id="@+id/saveRecipeButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
@@ -251,7 +249,7 @@
                     android:layout_marginRight="15dp"
                     android:layout_marginLeft="15dp"
                     android:background="@drawable/button_color"
-                    android:text="Create new recipe"
+                    android:text="Save"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"

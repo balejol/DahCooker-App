@@ -53,6 +53,7 @@
         android:background="@drawable/button_color"
         android:onClick="onAddCustomIngredientClicked"
         android:text="Add Custom Ingredient"
+        app:icon="@android:drawable/ic_input_add"
         app:layout_constraintBottom_toTopOf="@+id/buttonProceed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,6 +83,7 @@
         android:background="@drawable/button_color"
         android:onClick="onBackPressed"
         android:text="Back"
+        app:icon="?attr/actionModeCloseDrawable"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

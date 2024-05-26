@@ -50,6 +50,7 @@ public class Login extends AppCompatActivity {
         if(currentUser != null){
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             finish();
         }
     }
@@ -71,6 +72,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new  Intent(getApplicationContext(), Register.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
             }
         });
@@ -102,6 +104,7 @@ public class Login extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(),"Login Successful", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                     startActivity(intent);
+                                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                                     finish();
                                 } else {
                                     Toast.makeText(Login.this, "Authentication failed.",

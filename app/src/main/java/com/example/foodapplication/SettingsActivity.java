@@ -17,6 +17,8 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.Toast;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -29,28 +31,38 @@ public class SettingsActivity extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        //paleidzia sfx
+        if (mediaPlayer != null) {
+            mediaPlayer.start();
+        }
+
         switch (item.getItemId()) {
             case R.id.item1:
                 Intent mainIntent = new Intent(SettingsActivity.this, MainActivity.class);
                 startActivity(mainIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             case R.id.item2:
                 Intent recipeIntent = new Intent(SettingsActivity.this, IngredientsActivity.class);
                 startActivity(recipeIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             case R.id.item3:
                 Intent settingsIntent = new Intent(SettingsActivity.this, AddRecipePage.class);
                 startActivity(settingsIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     };
 
+    private MediaPlayer mediaPlayer;
     private MusicService musicService;
     private boolean isServiceBound = false;
 
-    //MediaPlayer musicPlayer;
+    private SharedPreferences sharedPreferences; // SharedPreferences object
 
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
@@ -70,34 +82,45 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        // Initialize MediaPlayer with your sound file
+        mediaPlayer = MediaPlayer.create(this, R.raw.buttonclick);
+
         Button backButton = findViewById(R.id.settBackButton); // Find the "recipeHistory" button by its ID
+
+        // Initialize SharedPreferences
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         // Bind to MusicService
         Intent intent = new Intent(this, MusicService.class);
         bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
 
-        //musicPlayer=MediaPlayer.create(this,R.raw.aaa);
-        //musicPlayer.setLooping(true);
-
         Switch musicSwitch = findViewById(R.id.switch1);
-        musicSwitch.setChecked(true);
+
+        // Retrieve the saved state of the switch
+        musicSwitch.setChecked(sharedPreferences.getBoolean("music_switch_state", true));
+        //musicSwitch.setChecked(true);
 
         musicSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                // Save the state of the switch
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("music_switch_state", isChecked);
+                editor.apply();
+
+                //paleidzia sfx
+                if (mediaPlayer != null) {
+                    mediaPlayer.start();
+                }
 
                 if (isChecked)
                 {
-                    //musicPlayer.start();
-                    //playMusic();
                     if (musicService != null) {
                         musicService.startMusic();
                     }
                 }
                 else
                 {
-                    //musicPlayer.stop();
-                    //stopMusic();
                     if (musicService != null) {
                         musicService.stopMusic();
                     }
@@ -105,15 +128,17 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (mediaPlayer != null) {
+                    mediaPlayer.start();
+                }
                 Intent intent = new Intent(getBaseContext(), MainActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
-
 
     }
 
@@ -124,37 +149,11 @@ public class SettingsActivity extends AppCompatActivity {
             unbindService(serviceConnection);
             isServiceBound = false;
         }
-    }
-
-    /*
-    private MediaPlayer createMediaPlayer() {
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.aaa);
-        mediaPlayer.setLooping(true);
-        return mediaPlayer;
-    }
-
-    private void playMusic() {
-        if (musicPlayer == null) {
-            musicPlayer = createMediaPlayer();
-        }
-        musicPlayer.start();
-    }
-
-    private void stopMusic() {
-        if (musicPlayer != null) {
-            musicPlayer.stop();
-            musicPlayer.release();
-            musicPlayer = null;
+        // Release the MediaPlayer resources
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
         }
     }
 
-    private MediaPlayer musicPlayer;
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        stopMusic();
-    }
-
-     */
 }
