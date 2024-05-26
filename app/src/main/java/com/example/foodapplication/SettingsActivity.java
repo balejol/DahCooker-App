@@ -85,8 +85,6 @@ public class SettingsActivity extends AppCompatActivity {
         // Initialize MediaPlayer with your sound file
         mediaPlayer = MediaPlayer.create(this, R.raw.buttonclick);
 
-        Button backButton = findViewById(R.id.settBackButton); // Find the "recipeHistory" button by its ID
-
         // Initialize SharedPreferences
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -127,19 +125,6 @@ public class SettingsActivity extends AppCompatActivity {
                 }
             }
         });
-
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mediaPlayer != null) {
-                    mediaPlayer.start();
-                }
-                Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            }
-        });
-
     }
 
     @Override

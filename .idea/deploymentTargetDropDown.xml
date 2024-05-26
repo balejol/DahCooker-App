@@ -8,7 +8,13 @@
       <entry key="Login">
         <State />
       </entry>
+      <entry key="LoginActivity">
+        <State />
+      </entry>
       <entry key="MainActivity">
+        <State />
+      </entry>
+      <entry key="SettingsActivity">
         <State />
       </entry>
       <entry key="app">
