@@ -174,6 +174,7 @@ public class RecipesPage extends AppCompatActivity
             {
                 Intent intent = new Intent(getBaseContext(), MainActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 /*
                 Intent intent2 = new Intent(RecipesPage.this, MainActivity.class);
                 try {
@@ -193,6 +194,7 @@ public class RecipesPage extends AppCompatActivity
             {
                 Intent intent = new Intent(getBaseContext(), AddRecipePage.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
     }

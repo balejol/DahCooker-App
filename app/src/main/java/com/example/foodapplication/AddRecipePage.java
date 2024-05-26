@@ -63,22 +63,27 @@ public class AddRecipePage extends AppCompatActivity {
                 //Toast.makeText(this, "Item 1 selected", Toast.LENGTH_SHORT).show();
                 Intent mainIntent = new Intent(AddRecipePage.this, MainActivity.class);
                 startActivity(mainIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             case R.id.item2:
                 Intent ingredientsIntent = new Intent(AddRecipePage.this, IngredientsActivity.class);
                 startActivity(ingredientsIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             case R.id.myRecipes:
                 Intent myRecipesIntent = new Intent(AddRecipePage.this, RecipesPage.class);
                 startActivity(myRecipesIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             case R.id.favoriteRecipes:
                 Intent favoriteRecipeIntent = new Intent (AddRecipePage.this, FavoriteRecipesPage.class);
                 startActivity(favoriteRecipeIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             case R.id.item3:
                 Intent addRecipeIntent = new Intent(AddRecipePage.this, AddRecipePage.class);
                 startActivity(addRecipeIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -173,6 +178,7 @@ public class AddRecipePage extends AppCompatActivity {
         {
             Intent intent = new Intent(getBaseContext(), RecipesPage.class);
             startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
     };
     //pridedamas naujas ingrediento įvedimo laukas
@@ -365,6 +371,7 @@ public class AddRecipePage extends AppCompatActivity {
                     //nuvedama i receptų puslapį
                     Intent intent = new Intent(getBaseContext(), RecipesPage.class);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
                     Toast.makeText(AddRecipePage.this, "Recipe added.",
                             Toast.LENGTH_SHORT).show();

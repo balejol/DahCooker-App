@@ -22,6 +22,9 @@
             android:name=".RecipeInformationPage"
             android:exported="false" />
         <activity
+            android:name=".App_Intro"
+            android:exported="true" />
+        <activity
             android:name=".FavoriteRecipesPage"
             android:exported="false" />
 

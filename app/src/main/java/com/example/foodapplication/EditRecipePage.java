@@ -50,22 +50,27 @@ public class EditRecipePage extends AppCompatActivity {
                 //Toast.makeText(this, "Item 1 selected", Toast.LENGTH_SHORT).show();
                 Intent mainIntent = new Intent(EditRecipePage.this, MainActivity.class);
                 startActivity(mainIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             case R.id.item2:
                 Intent ingredientsIntent = new Intent(EditRecipePage.this, IngredientsActivity.class);
                 startActivity(ingredientsIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             case R.id.myRecipes:
                 Intent myRecipesIntent = new Intent(EditRecipePage.this, RecipesPage.class);
                 startActivity(myRecipesIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             case R.id.favoriteRecipes:
                 Intent favoriteRecipeIntent = new Intent (EditRecipePage.this, FavoriteRecipesPage.class);
                 startActivity(favoriteRecipeIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             case R.id.item3:
                 Intent addRecipeIntent = new Intent(EditRecipePage.this, AddRecipePage.class);
                 startActivity(addRecipeIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -261,6 +266,7 @@ public class EditRecipePage extends AppCompatActivity {
             Intent intent = new Intent(getBaseContext(), RecipeInformationPage.class);
             intent.putExtra("RecipeId", id);
             startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
     };
 
@@ -443,6 +449,7 @@ public class EditRecipePage extends AppCompatActivity {
                 Intent intent = new Intent(getBaseContext(), RecipeInformationPage.class);
                 intent.putExtra("RecipeId", id);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
                 Toast.makeText(EditRecipePage.this, "Changed saved.",
                         Toast.LENGTH_SHORT).show();
