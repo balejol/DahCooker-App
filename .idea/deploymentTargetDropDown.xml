@@ -5,16 +5,10 @@
       <entry key="AddRecipePage">
         <State />
       </entry>
-      <entry key="App_Intro">
-        <State />
-      </entry>
-      <entry key="IngredientsActivity">
-        <State />
-      </entry>
       <entry key="Login">
         <State />
       </entry>
-      <entry key="RecipeHistoryActivity">
+      <entry key="MainActivity">
         <State />
       </entry>
       <entry key="app">
