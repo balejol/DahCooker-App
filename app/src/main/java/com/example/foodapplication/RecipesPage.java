@@ -47,27 +47,35 @@ public class RecipesPage extends AppCompatActivity
             mediaPlayer.start();
         }
         switch (item.getItemId()) {
+            // iš My recipes į Main
             case R.id.item1:
-                //Toast.makeText(this, "Item 1 selected", Toast.LENGTH_SHORT).show();
                 Intent mainIntent = new Intent(RecipesPage.this, MainActivity.class);
                 startActivity(mainIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
+            // iš My recipes į Ingredients
             case R.id.item2:
                 Intent ingredientsIntent = new Intent(RecipesPage.this, IngredientsActivity.class);
                 startActivity(ingredientsIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
-            case R.id.myRecipes:
-                Intent myRecipesIntent = new Intent(RecipesPage.this, RecipesPage.class);
-                startActivity(myRecipesIntent);
-                return true;
-            case R.id.favoriteRecipes:
-                Intent favoriteRecipeIntent = new Intent (RecipesPage.this, FavoriteRecipesPage.class);
-                startActivity(favoriteRecipeIntent);
-                return true;
+            // iš My recipes į Add recipe
             case R.id.item3:
-                Intent addRecipeIntent = new Intent(RecipesPage.this, AddRecipePage.class);
-                startActivity(addRecipeIntent);
+                Intent recipeIntent = new Intent(RecipesPage.this, AddRecipePage.class);
+                startActivity(recipeIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
+            // iš My recipes į Favourite recipes
+            case R.id.item5:
+                Intent favouriteIntent = new Intent(RecipesPage.this, FavoriteRecipesPage.class);
+                startActivity(favouriteIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                return true;
+            // iš My recipes į Settings
+            case R.id.item6:
+                Intent settingsIntent = new Intent(RecipesPage.this, SettingsActivity.class);
+                startActivity(settingsIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             default:
                 return super.onOptionsItemSelected(item);
         }

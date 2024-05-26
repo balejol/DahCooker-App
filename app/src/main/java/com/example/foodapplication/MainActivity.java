@@ -28,27 +28,35 @@ public class MainActivity extends AppCompatActivity {
             mediaPlayer.start();
         }
         switch (item.getItemId()) {
+            // iš Main į Ingredients
             case R.id.item2:
                 Intent ingredientsIntent = new Intent(MainActivity.this, IngredientsActivity.class);
                 startActivity(ingredientsIntent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
+            // iš Main į Add recipe
             case R.id.item3:
                 Intent recipeIntent = new Intent(MainActivity.this, AddRecipePage.class);
                 startActivity(recipeIntent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
+            // iš Main į My recipes
             case R.id.item4:
+                Intent myrecipeIntent = new Intent(MainActivity.this, RecipesPage.class);
+                startActivity(myrecipeIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                return true;
+            // iš Main į Favourite recipes
+            case R.id.item5:
+                Intent favouriteIntent = new Intent(MainActivity.this, FavoriteRecipesPage.class);
+                startActivity(favouriteIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                return true;
+            // iš Main į Settings
+            case R.id.item6:
                 Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(settingsIntent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                return true;
-          /*  case R.id.subitem1:
-                Toast.makeText(this, "Sub Item 1 selected", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.subitem2:
-                Toast.makeText(this, "Sub Item 2 selected", Toast.LENGTH_SHORT).show();
-                return true;*/
             default:
                 return super.onOptionsItemSelected(item);
         }

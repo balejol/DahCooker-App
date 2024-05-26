@@ -35,21 +35,35 @@ public class IngredientsActivity extends AppCompatActivity {
         }
 
         switch (item.getItemId()) {
+            // iš Ingredients į Main
             case R.id.item1:
                 Intent mainIntent = new Intent(IngredientsActivity.this, MainActivity.class);
                 startActivity(mainIntent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                return true;
+               return true;
+            // iš Ingredients į Add recipe
             case R.id.item3:
                 Intent recipeIntent = new Intent(IngredientsActivity.this, AddRecipePage.class);
                 startActivity(recipeIntent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
+            // iš Ingredients į My recipes
             case R.id.item4:
+                Intent myrecipeIntent = new Intent(IngredientsActivity.this, RecipesPage.class);
+                startActivity(myrecipeIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                return true;
+            // iš Ingredients į Favourite recipes
+            case R.id.item5:
+                Intent favouriteIntent = new Intent(IngredientsActivity.this, FavoriteRecipesPage.class);
+                startActivity(favouriteIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                return true;
+            // iš Ingredients į Settings
+            case R.id.item6:
                 Intent settingsIntent = new Intent(IngredientsActivity.this, SettingsActivity.class);
                 startActivity(settingsIntent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

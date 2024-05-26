@@ -41,7 +41,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- MainActivity -->
+        </activity>
+        <!-- MainActivity -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -50,32 +51,38 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- LoginActivity -->
+        </activity>
+        <!-- LoginActivity -->
         <activity
             android:name=".LoginActivity"
-            android:exported="true" /> <!-- RegistrationActivity -->
+            android:exported="true" />
+        <!-- RegistrationActivity -->
         <activity
             android:name=".RegistrationActivity"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" /> <!-- IngredientsActivity -->
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <!-- IngredientsActivity -->
         <activity
             android:name=".IngredientsActivity"
-            android:exported="true" /> <!-- RecipeActivity -->
+            android:exported="true" />
+        <!-- AddRecipeActivity -->
         <activity
             android:name=".AddRecipePage"
-            android:exported="true" /> <!-- RecipePage -->
+            android:exported="true" />
+        <!-- RecipesPage -->
         <activity
             android:name=".RecipesPage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- RecipeHistoryActivity -->
+        </activity>
+        <!-- RecipeHistoryActivity -->
         <activity
             android:name=".RecipeHistoryActivity"
-            android:exported="true" /> <!-- SettingsActivity -->
+            android:exported="true" />
+        <!-- SettingsActivity -->
         <activity
             android:name=".SettingsActivity"
             android:exported="true" />

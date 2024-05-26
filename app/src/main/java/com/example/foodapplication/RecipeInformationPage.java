@@ -26,44 +26,44 @@ public class RecipeInformationPage extends AppCompatActivity {
         inflater.inflate(R.menu.example_menu, menu);
         return true;
     }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        //paleidzia sfx
-        if (mediaPlayer != null) {
-            mediaPlayer.start();
-        }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        //paleidzia sfx
+//        if (mediaPlayer != null) {
+//            mediaPlayer.start();
+//        }
 
-        switch (item.getItemId()) {
-            case R.id.item1:
-                //Toast.makeText(this, "Item 1 selected", Toast.LENGTH_SHORT).show();
-                Intent mainIntent = new Intent(RecipeInformationPage.this, MainActivity.class);
-                startActivity(mainIntent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                return true;
-            case R.id.item2:
-                Intent ingredientsIntent = new Intent(RecipeInformationPage.this, IngredientsActivity.class);
-                startActivity(ingredientsIntent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                return true;
-            case R.id.myRecipes:
-                Intent myRecipesIntent = new Intent(RecipeInformationPage.this, RecipesPage.class);
-                startActivity(myRecipesIntent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                return true;
-            case R.id.favoriteRecipes:
-                Intent favoriteRecipeIntent = new Intent (RecipeInformationPage.this, FavoriteRecipesPage.class);
-                startActivity(favoriteRecipeIntent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                return true;
-            case R.id.item3:
-                Intent addRecipeIntent = new Intent(RecipeInformationPage.this, AddRecipePage.class);
-                startActivity(addRecipeIntent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    };
+//        switch (item.getItemId()) {
+//            case R.id.item1:
+//                //Toast.makeText(this, "Item 1 selected", Toast.LENGTH_SHORT).show();
+//                Intent mainIntent = new Intent(RecipeInformationPage.this, MainActivity.class);
+//                startActivity(mainIntent);
+//                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+//                return true;
+//            case R.id.item2:
+//                Intent ingredientsIntent = new Intent(RecipeInformationPage.this, IngredientsActivity.class);
+//                startActivity(ingredientsIntent);
+//                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+//                return true;
+//            case R.id.item3:
+//                Intent myRecipesIntent = new Intent(RecipeInformationPage.this, RecipesPage.class);
+//                startActivity(myRecipesIntent);
+//                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+//                return true;
+//            case R.id.item4:
+//                Intent favoriteRecipeIntent = new Intent (RecipeInformationPage.this, FavoriteRecipesPage.class);
+//                startActivity(favoriteRecipeIntent);
+//                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+//                return true;
+//            case R.id.item5:
+//                Intent addRecipeIntent = new Intent(RecipeInformationPage.this, AddRecipePage.class);
+//                startActivity(addRecipeIntent);
+//                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
