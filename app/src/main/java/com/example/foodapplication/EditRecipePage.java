@@ -33,8 +33,13 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.media.MediaPlayer;
 
 public class EditRecipePage extends AppCompatActivity {
+
+    private MediaPlayer mediaPlayer;
+    private MediaPlayer cancelSFX;
+    private MediaPlayer favSFX;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -45,6 +50,10 @@ public class EditRecipePage extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        //paleidzia sfx
+        if (mediaPlayer != null) {
+            mediaPlayer.start();
+        }
         switch (item.getItemId()) {
             case R.id.item1:
                 //Toast.makeText(this, "Item 1 selected", Toast.LENGTH_SHORT).show();
@@ -98,6 +107,10 @@ public class EditRecipePage extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_recipe_page);
+
+        mediaPlayer = MediaPlayer.create(this, R.raw.buttonclick);
+        cancelSFX = MediaPlayer.create(this, R.raw.cancleclickf);
+        favSFX = MediaPlayer.create(this, R.raw.favsound);
 
         //ingridientų sąrašas
         Ingredients = new ArrayList<Ingredient>();
@@ -265,6 +278,10 @@ public class EditRecipePage extends AppCompatActivity {
         {
             Intent intent = new Intent(getBaseContext(), RecipeInformationPage.class);
             intent.putExtra("RecipeId", id);
+            //paleidzia sfx
+            if (cancelSFX != null) {
+                cancelSFX.start();
+            }
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
@@ -274,6 +291,11 @@ public class EditRecipePage extends AppCompatActivity {
     {
         @Override
         public void onClick(View v) {
+
+            //paleidzia sfx
+            if (favSFX != null) {
+                favSFX.start();
+            }
 
             //visu ingredientu sarasas
             LinearLayout ingredientLayout = (LinearLayout)
@@ -344,6 +366,10 @@ public class EditRecipePage extends AppCompatActivity {
         @Override
         public void onClick(View btt)
         {
+            //paleidzia sfx
+            if (cancelSFX != null) {
+                cancelSFX.start();
+            }
             LinearLayout ingredients = (LinearLayout) findViewById((R.id.ingredientLayout));
             LinearLayout ingredientLine = (LinearLayout) btt.getParent();
             ingredients.removeView(ingredientLine);
@@ -354,6 +380,10 @@ public class EditRecipePage extends AppCompatActivity {
         @Override
         public void onClick(View view)
         {
+            //paleidzia sfx
+            if (favSFX != null) {
+                favSFX.start();
+            }
             String recipeName = et_recipeName.getText().toString();
             String preparationText = et_preparation.getText().toString();
             String notesText = et_notes.getText().toString();

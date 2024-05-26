@@ -45,14 +45,15 @@
         android:id="@+id/backButtonRecipes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_color"
         android:text="Back"
+        app:icon="?attr/actionModeCloseDrawable"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95"
-        android:background="@drawable/button_color"/>
+        app:layout_constraintVertical_bias="0.95" />
 
     <TextView
         android:id="@+id/oops"

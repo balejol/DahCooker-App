@@ -19,9 +19,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.media.MediaPlayer;
 
 public class FavoriteRecipesPage extends AppCompatActivity
 {
+    private MediaPlayer mediaPlayer;
+    private MediaPlayer cancelSFX;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -30,6 +33,10 @@ public class FavoriteRecipesPage extends AppCompatActivity
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        //paleidzia sfx
+        if (mediaPlayer != null) {
+            mediaPlayer.start();
+        }
         switch (item.getItemId()) {
             case R.id.item1:
                 //Toast.makeText(this, "Item 1 selected", Toast.LENGTH_SHORT).show();
@@ -71,6 +78,9 @@ public class FavoriteRecipesPage extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorite_recipes_page);
+
+        mediaPlayer = MediaPlayer.create(this, R.raw.buttonclick);
+        cancelSFX = MediaPlayer.create(this, R.raw.cancleclickf);
 
         backButton = (Button) findViewById(R.id.backButtonRecipes);
         tw_emptyInformation = findViewById(R.id.oops);
@@ -157,6 +167,10 @@ public class FavoriteRecipesPage extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
+                //paleidzia sfx
+                if (mediaPlayer != null) {
+                    mediaPlayer.start();
+                }
                 Intent intent = new Intent(getBaseContext(), RecipesPage.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -167,6 +181,10 @@ public class FavoriteRecipesPage extends AppCompatActivity
     //leidzia pašalinti mėgstamą receptą iš mėgstamiausių puslapio
     private void UnfavoriteARecipe(final Button btt, final int id)
     {
+        //paleidzia sfx
+        if (cancelSFX != null) {
+            cancelSFX.start();
+        }
         if(RecipesPage.RecipesList.GetRecipe(id).IsFavorite())
         {
             RecipesPage.RecipesList.GetRecipe(id).IsFavorite(false);

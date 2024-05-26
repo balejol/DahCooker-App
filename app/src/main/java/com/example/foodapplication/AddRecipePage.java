@@ -38,6 +38,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.media.MediaPlayer;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -49,6 +50,9 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class AddRecipePage extends AppCompatActivity {
 
+    private MediaPlayer mediaPlayer;
+    private MediaPlayer cancelSFX;
+
     // - - - - MENU - - -
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -58,6 +62,10 @@ public class AddRecipePage extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        //paleidzia sfx
+        if (mediaPlayer != null) {
+            mediaPlayer.start();
+        }
         switch (item.getItemId()) {
             case R.id.item1:
                 //Toast.makeText(this, "Item 1 selected", Toast.LENGTH_SHORT).show();
@@ -111,6 +119,9 @@ public class AddRecipePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_recipe);
 
+        mediaPlayer = MediaPlayer.create(this, R.raw.buttonclick);
+        cancelSFX = MediaPlayer.create(this, R.raw.cancleclickf);
+
         //ingridientų sąrašas
         Ingredients = new ArrayList<Ingredient>();
         //randami laukai
@@ -138,6 +149,10 @@ public class AddRecipePage extends AppCompatActivity {
 
     //pasalinama nuotrauka
     private void RemoveImage(){
+        //paleidzia sfx
+        if (cancelSFX != null) {
+            cancelSFX.start();
+        }
         iw_recipeImagePreview.setImageResource(R.drawable.recipe_photo_placeolder);
         bt_removeImage.setVisibility(View.INVISIBLE);
         ImageSelected = false;
@@ -145,6 +160,10 @@ public class AddRecipePage extends AppCompatActivity {
 
     //leidziama pasirinkti nuotrauka
     private void PickAnImage() {
+        //paleidzia sfx
+        if (mediaPlayer != null) {
+            mediaPlayer.start();
+        }
         Intent intent = new Intent(MediaStore.ACTION_PICK_IMAGES);
         imageResultLauncher.launch(intent);
     }
@@ -178,6 +197,10 @@ public class AddRecipePage extends AppCompatActivity {
         {
             Intent intent = new Intent(getBaseContext(), RecipesPage.class);
             startActivity(intent);
+            //paleidzia sfx
+            if (cancelSFX != null) {
+                cancelSFX.start();
+            }
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
     };
@@ -186,6 +209,10 @@ public class AddRecipePage extends AppCompatActivity {
     {
         @Override
         public void onClick(View v) {
+            //paleidzia sfx
+            if (mediaPlayer != null) {
+                mediaPlayer.start();
+            }
             //visu ingredientu sarasas
             LinearLayout ingredientLayout = (LinearLayout)
                     findViewById(R.id.ingredientLayout);
@@ -260,6 +287,10 @@ public class AddRecipePage extends AppCompatActivity {
             LinearLayout ingredients = (LinearLayout) findViewById((R.id.ingredientLayout));
             LinearLayout ingredientLine = (LinearLayout) btt.getParent();
             ingredients.removeView(ingredientLine);
+            //paleidzia sfx
+            if (cancelSFX != null) {
+                cancelSFX.start();
+            }
         }
     };
 
@@ -275,6 +306,11 @@ public class AddRecipePage extends AppCompatActivity {
             Bitmap image = ((BitmapDrawable)iw_recipeImagePreview.getDrawable()).getBitmap();
             List<Ingredient> IngredientList = new ArrayList<>();
             LinearLayout ingredientsLayout = (LinearLayout) findViewById((R.id.ingredientLayout));
+
+            //paleidzia sfx
+            if (mediaPlayer != null) {
+                mediaPlayer.start();
+            }
 
             //jei repepto pavadinimo laukas tuščias
             if(recipeName.equals(""))

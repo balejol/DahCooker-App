@@ -180,7 +180,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="680dp"
         android:layout_marginEnd="10dp"
-        android:text="User detalės"
+        android:text="User details"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.019"
         app:layout_constraintStart_toStartOf="parent"

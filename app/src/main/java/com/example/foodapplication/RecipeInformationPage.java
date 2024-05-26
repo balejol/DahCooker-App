@@ -14,9 +14,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.media.MediaPlayer;
+
 
 public class RecipeInformationPage extends AppCompatActivity {
 
+    private MediaPlayer mediaPlayer;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -25,6 +28,11 @@ public class RecipeInformationPage extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        //paleidzia sfx
+        if (mediaPlayer != null) {
+            mediaPlayer.start();
+        }
+
         switch (item.getItemId()) {
             case R.id.item1:
                 //Toast.makeText(this, "Item 1 selected", Toast.LENGTH_SHORT).show();
@@ -61,6 +69,8 @@ public class RecipeInformationPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_information_page);
+
+        mediaPlayer = MediaPlayer.create(this, R.raw.buttonclick);
 
         int id = getIntent().getIntExtra("RecipeId", -1);
 
@@ -116,6 +126,10 @@ public class RecipeInformationPage extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
+                //paleidzia sfx
+                if (mediaPlayer != null) {
+                    mediaPlayer.start();
+                }
                 Intent intent = new Intent(getBaseContext(), RecipesPage.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -126,6 +140,10 @@ public class RecipeInformationPage extends AppCompatActivity {
     //nuvedama į redagavimo puslapį
     private void EditRecipe(final int id)
     {
+        //paleidzia sfx
+        if (mediaPlayer != null) {
+            mediaPlayer.start();
+        }
         Intent editPageIntent = new Intent(RecipeInformationPage.this, EditRecipePage.class);
         editPageIntent.putExtra("RecipeId", id);
         startActivity(editPageIntent);

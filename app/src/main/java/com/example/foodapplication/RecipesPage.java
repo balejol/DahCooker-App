@@ -27,10 +27,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.LinearLayout.LayoutParams;
+import android.media.MediaPlayer;
 
 import java.util.ArrayList;
 public class RecipesPage extends AppCompatActivity
 {
+    private MediaPlayer mediaPlayer;
+    private MediaPlayer cancelClick;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -39,6 +42,10 @@ public class RecipesPage extends AppCompatActivity
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        //paleidzia sfx
+        if (mediaPlayer != null) {
+            mediaPlayer.start();
+        }
         switch (item.getItemId()) {
             case R.id.item1:
                 //Toast.makeText(this, "Item 1 selected", Toast.LENGTH_SHORT).show();
@@ -78,6 +85,9 @@ public class RecipesPage extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipes);
+
+        mediaPlayer = MediaPlayer.create(this, R.raw.buttonclick);
+        cancelClick = MediaPlayer.create(this, R.raw.cancleclickf);
 
         bt_addRecipe = (Button) findViewById(R.id.button);
         backButton = (Button) findViewById(R.id.backButtonRecipes);
@@ -173,6 +183,10 @@ public class RecipesPage extends AppCompatActivity
             public void onClick(View view)
             {
                 Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                //paleidzia sfx
+                if (mediaPlayer != null) {
+                    mediaPlayer.start();
+                }
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 /*
@@ -193,6 +207,10 @@ public class RecipesPage extends AppCompatActivity
             public void onClick(View view)
             {
                 Intent intent = new Intent(getBaseContext(), AddRecipePage.class);
+                //paleidzia sfx
+                if (mediaPlayer != null) {
+                    mediaPlayer.start();
+                }
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
@@ -204,6 +222,10 @@ public class RecipesPage extends AppCompatActivity
     {
         Intent RecipeDetailIntent = new Intent (RecipesPage.this, RecipeInformationPage.class);
         RecipeDetailIntent.putExtra("RecipeId", id);
+        //paleidzia sfx
+        if (mediaPlayer != null) {
+            mediaPlayer.start();
+        }
         startActivity(RecipeDetailIntent);
     }
 
@@ -255,12 +277,22 @@ public class RecipesPage extends AppCompatActivity
         @Override
         public void onClick(View btt)
         {
+            //paleidzia sfx
+            if (mediaPlayer != null) {
+                mediaPlayer.start();
+            }
             AlertDialog dialog = new AlertDialog.Builder(RecipesPage.this)
+
                     .setTitle("Confirmation")
                     .setMessage("Are you sure you want to remove this recipe?")
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
+
                         public void onClick(DialogInterface dialog, int whichButton) {
+                            //paleidzia sfx
+                            if (cancelClick != null) {
+                                cancelClick.start();
+                            }
                             Toast.makeText(RecipesPage.this, "Recipe removed", Toast.LENGTH_SHORT).show();
                             LinearLayout recipes = (LinearLayout) findViewById((R.id.recipeListLayout));
                             LinearLayout recipeLine = (LinearLayout) btt.getParent().getParent();
@@ -277,6 +309,10 @@ public class RecipesPage extends AppCompatActivity
                         }
                     })
                     .setNegativeButton(android.R.string.no, null).show();
+            //paleidzia sfx
+            if (mediaPlayer != null) {
+                mediaPlayer.start();
+            }
             dialog.getWindow().setBackgroundDrawableResource(R.drawable.button_color);
         }
 
