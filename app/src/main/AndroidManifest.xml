@@ -16,8 +16,14 @@
         android:theme="@style/Theme.FoodApplication"
         tools:targetApi="31">
         <activity
-            android:name=".App_Intro"
-            android:exported="true" />
+            android:name=".EditRecipePage"
+            android:exported="false" />
+        <activity
+            android:name=".RecipeInformationPage"
+            android:exported="false" />
+        <activity
+            android:name=".FavoriteRecipesPage"
+            android:exported="false" />
 
         <service android:name=".MusicService" />
 
@@ -44,11 +50,11 @@
         </activity> <!-- LoginActivity -->
         <activity
             android:name=".LoginActivity"
-            android:exported="true"></activity> <!-- RegistrationActivity -->
+            android:exported="true" /> <!-- RegistrationActivity -->
         <activity
             android:name=".RegistrationActivity"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity> <!-- IngredientsActivity -->
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" /> <!-- IngredientsActivity -->
         <activity
             android:name=".IngredientsActivity"
             android:exported="true" /> <!-- RecipeActivity -->
