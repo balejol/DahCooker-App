@@ -12,6 +12,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -106,6 +107,7 @@ public class AddRecipePage extends AppCompatActivity {
     Button bt_addIngredient;
     Button bt_pickImage;
     Button bt_removeImage;
+    Button bt_takeAPhoto;
     EditText et_recipeName;
     EditText et_preparation;
     EditText et_notes;
@@ -115,6 +117,8 @@ public class AddRecipePage extends AppCompatActivity {
     Boolean ImageSelected = false;
     private static final String[] measurements = new String[]{"-", "unit", "l", "ml", "kg", "g", "mg", "tsp", "tbsp"};
     //int id = 0;
+
+    static final int REQUEST_IMAGE_CAPTURE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -135,6 +139,7 @@ public class AddRecipePage extends AppCompatActivity {
         bt_addIngredient = (Button) findViewById((R.id.addIngredient));
         bt_pickImage = (Button) findViewById(R.id.pickAnImageButton);
         bt_removeImage = (Button) findViewById((R.id.removeAnImageButton));
+        bt_takeAPhoto = findViewById(R.id.takeAPhotoButton);
         //randami edit text
         et_notes = (EditText) findViewById(R.id.notesField);
         et_preparation = (EditText) findViewById(R.id.preparationField);
@@ -148,6 +153,24 @@ public class AddRecipePage extends AppCompatActivity {
         bt_addIngredient.setOnClickListener(AddIngredientField);
         bt_pickImage.setOnClickListener(view -> PickAnImage());
         bt_removeImage.setOnClickListener(view -> RemoveImage());
+        bt_takeAPhoto.setOnClickListener(view -> dispatchTakePictureIntent());
+    }
+
+    private void TakeAPhoto()
+    {
+        Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+    }
+
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        try {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+            Toast.makeText(AddRecipePage.this, "Loading camera", Toast.LENGTH_SHORT).show();
+
+
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(AddRecipePage.this, "Camera did not load", Toast.LENGTH_SHORT).show();
+        }
     }
 
     //pasalinama nuotrauka
