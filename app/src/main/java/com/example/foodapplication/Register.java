@@ -46,6 +46,8 @@ public class Register extends AppCompatActivity {
 
     public void onStart() {
         super.onStart();
+        this.getSupportActionBar().hide();
+
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){

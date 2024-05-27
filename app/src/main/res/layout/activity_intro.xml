@@ -33,7 +33,7 @@
         android:id="@+id/appIcon"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/recipe_photo_placeolder"
+        android:src="@drawable/logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
