@@ -15,6 +15,7 @@ public class App_Intro extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
+        this.getSupportActionBar().hide();
 
         mediaPlayer = MediaPlayer.create(this, R.raw.introsfx);
 
@@ -26,7 +27,7 @@ public class App_Intro extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(App_Intro.this, MainActivity.class)); //Pakeisim veliau i reikiama pradini ekrana
+                startActivity(new Intent(App_Intro.this, Login.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
             }
