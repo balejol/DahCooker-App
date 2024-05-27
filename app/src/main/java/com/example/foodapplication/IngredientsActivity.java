@@ -83,8 +83,8 @@ public class IngredientsActivity extends AppCompatActivity {
         ingredientList = new ArrayList<>();
         ingredientList.add(new IngredientItem("Vištiena", 0));
         ingredientList.add(new IngredientItem("Kiauliena", 0));
-        ingredientList.add(new IngredientItem("Salota", 5));
-        ingredientList.add(new IngredientItem("Kiaušiniai", 7));
+        ingredientList.add(new IngredientItem("Salota", 0));
+        ingredientList.add(new IngredientItem("Kiaušiniai", 0));
 
         RecyclerView recyclerViewIngredients = findViewById(R.id.recyclerViewIngredients);
         recyclerViewIngredients.setLayoutManager(new LinearLayoutManager(this));
