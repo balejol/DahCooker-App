@@ -5,13 +5,13 @@
       <entry key="FavoriteRecipesPage">
         <State />
       </entry>
+      <entry key="IngredientsActivity">
+        <State />
+      </entry>
       <entry key="MainActivity">
         <State />
       </entry>
       <entry key="RecipeHistoryActivity">
-        <State />
-      </entry>
-      <entry key="RecipeInformationPage">
         <State />
       </entry>
       <entry key="RecipesPage">
