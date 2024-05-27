@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.foodapplication">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -15,6 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodApplication"
         tools:targetApi="31">
+
         <activity
             android:name=".EditRecipePage"
             android:exported="false" />
@@ -30,49 +33,45 @@
         <activity
             android:name=".Register"
             android:exported="false" />
+
         <activity
             android:name=".Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> <!-- MainActivity -->
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity> <!-- LoginActivity -->
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+
         <activity
             android:name=".LoginActivity"
             android:exported="true" /> <!-- RegistrationActivity -->
+
         <activity
             android:name=".RegistrationActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" /> <!-- IngredientsActivity -->
+
         <activity
             android:name=".IngredientsActivity"
             android:exported="true" /> <!-- RecipeActivity -->
+
         <activity
             android:name=".AddRecipePage"
             android:exported="true" /> <!-- RecipePage -->
+
         <activity
             android:name=".RecipesPage"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="true" /> <!-- RecipeHistoryActivity -->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> <!-- RecipeHistoryActivity -->
         <activity
             android:name=".RecipeHistoryActivity"
             android:exported="true" /> <!-- SettingsActivity -->
+
         <activity
             android:name=".SettingsActivity"
             android:exported="true" />

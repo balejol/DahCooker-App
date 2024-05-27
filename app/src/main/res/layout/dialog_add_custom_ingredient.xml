@@ -9,12 +9,18 @@
         android:id="@+id/editTextIngredientName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ingredient Name"/>
+        android:hint="Ingredient Name" />
 
     <EditText
         android:id="@+id/editTextIngredientQuantity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Quantity"/>
+        android:hint="Quantity"
+        android:inputType="numberDecimal" />
+
+    <Spinner
+        android:id="@+id/spinnerIngredientMeasurement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

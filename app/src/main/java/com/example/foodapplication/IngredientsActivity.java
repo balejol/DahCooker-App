@@ -1,116 +1,126 @@
 package com.example.foodapplication;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class IngredientsActivity extends AppCompatActivity {
 
-    // - - - - MENU - - -
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.example_menu, menu);
-        return true;
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.item1:
-                Intent mainIntent = new Intent(IngredientsActivity.this, MainActivity.class);
-                startActivity(mainIntent);
-                return true;
-            case R.id.item3:
-                Intent recipeIntent = new Intent(IngredientsActivity.this, AddRecipePage.class);
-                startActivity(recipeIntent);
-                return true;
-            case R.id.item4:
-                Intent settingsIntent = new Intent(IngredientsActivity.this, SettingsActivity.class);
-                startActivity(settingsIntent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    };
-
-
-    private ArrayList<IngredientItem> ingredientList;
+    private RecyclerView recyclerView;
     private IngredientsAdapter adapter;
+    private ArrayList<IngredientItem> ingredientItems;
+    private DatabaseReference databaseReference;
+    private FirebaseAuth firebaseAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingredients);
 
-        ingredientList = new ArrayList<>();
-        ingredientList.add(new IngredientItem("Vištiena", 0));
-        ingredientList.add(new IngredientItem("Kiauliena", 0));
-        ingredientList.add(new IngredientItem("Salota", 5));
-        ingredientList.add(new IngredientItem("Kiaušiniai", 7));
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
 
-        RecyclerView recyclerViewIngredients = findViewById(R.id.recyclerViewIngredients);
-        recyclerViewIngredients.setLayoutManager(new LinearLayoutManager(this));
+        if (currentUser == null) {
+            Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
 
-        adapter = new IngredientsAdapter(ingredientList);
-        recyclerViewIngredients.setAdapter(adapter);
+        String userId = currentUser.getUid();
+        databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userId).child("ingredients");
+
+        recyclerView = findViewById(R.id.recyclerViewIngredients);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        ingredientItems = new ArrayList<>();
+        adapter = new IngredientsAdapter(this, ingredientItems);
+        recyclerView.setAdapter(adapter);
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ingredientItems.clear();
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                    IngredientItem ingredientItem = postSnapshot.getValue(IngredientItem.class);
+                    ingredientItems.add(ingredientItem);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(IngredientsActivity.this, "Failed to load data.", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void onAddCustomIngredientClicked(View view) {
-        showAddCustomIngredientDialog();
-    }
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View dialogView = inflater.inflate(R.layout.dialog_add_custom_ingredient, null);
 
-    private void showAddCustomIngredientDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Add Custom Ingredient");
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        dialogBuilder.setView(dialogView);
 
-        View view = LayoutInflater.from(this).inflate(R.layout.dialog_add_custom_ingredient, null);
-        EditText editTextIngredientName = view.findViewById(R.id.editTextIngredientName);
-        EditText editTextIngredientQuantity = view.findViewById(R.id.editTextIngredientQuantity);
-        builder.setView(view);
+        final EditText nameEditText = dialogView.findViewById(R.id.editTextIngredientName);
+        final EditText quantityEditText = dialogView.findViewById(R.id.editTextIngredientQuantity);
+        final Spinner measurementSpinner = dialogView.findViewById(R.id.spinnerIngredientMeasurement);
 
-        builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                String ingredientName = editTextIngredientName.getText().toString().trim();
-                String quantityString = editTextIngredientQuantity.getText().toString().trim();
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.measurements_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        measurementSpinner.setAdapter(adapter);
 
-                if (!ingredientName.isEmpty() && !quantityString.isEmpty()) {
-                    int quantity = Integer.parseInt(quantityString);
+        dialogBuilder.setTitle("Add Custom Ingredient");
+        dialogBuilder.setPositiveButton("Add", (dialog, which) -> {
+            String name = nameEditText.getText().toString().trim();
+            String quantity = quantityEditText.getText().toString().trim();
+            String measurement = measurementSpinner.getSelectedItem().toString();
 
-                    ingredientList.add(new IngredientItem(ingredientName, quantity));
-                    adapter.notifyDataSetChanged();
-                    Toast.makeText(getApplicationContext(), "Custom ingredient added: " + ingredientName, Toast.LENGTH_SHORT).show();
-                } else {
-
-                    Toast.makeText(getApplicationContext(), "Please enter both ingredient name and quantity", Toast.LENGTH_SHORT).show();
-                }
+            if (name.isEmpty()) {
+                Toast.makeText(IngredientsActivity.this, "Please enter an ingredient name", Toast.LENGTH_SHORT).show();
+                return;
             }
-        });
-        builder.setNegativeButton("Cancel", null);
 
-        AlertDialog dialog = builder.create();
+            if (quantity.isEmpty() || !quantity.matches("\\d+(\\.\\d+)?")) {
+                Toast.makeText(IngredientsActivity.this, "Please enter a valid quantity", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            String id = databaseReference.push().getKey();
+            IngredientItem ingredientItem = new IngredientItem(id, name, quantity, measurement);
+            databaseReference.child(id).setValue(ingredientItem);
+            Toast.makeText(IngredientsActivity.this, "Ingredient added", Toast.LENGTH_SHORT).show();
+        });
+        dialogBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+
+        AlertDialog dialog = dialogBuilder.create();
         dialog.show();
     }
 
-    public void onProceedClicked(View view) {
-
-        for (int i = 0; i < ingredientList.size(); i++) {
-            int quantity = adapter.getQuantity(i);
-            ingredientList.get(i).setQuantity(quantity);
-        }
-
-        Toast.makeText(this, "Information saved successfully", Toast.LENGTH_SHORT).show();
-
+    public void onBackPressed(View view) {
+        // Navigate back to the main activity
+        Intent intent = new Intent(IngredientsActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

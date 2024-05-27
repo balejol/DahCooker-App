@@ -1,50 +1,51 @@
 package com.example.foodapplication;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
+import android.widget.Button;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import java.util.ArrayList;
 
-public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.ViewHolder> {
-    private ArrayList<IngredientItem> ingredientList;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.List;
 
-    public IngredientsAdapter(ArrayList<IngredientItem> ingredientList) {
+public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.IngredientViewHolder> {
+
+    private Context context;
+    private List<IngredientItem> ingredientList;
+    private DatabaseReference databaseReference;
+
+    public IngredientsAdapter(Context context, List<IngredientItem> ingredientList) {
+        this.context = context;
         this.ingredientList = ingredientList;
-    }
-
-    public int getQuantity(int position) {
-        return ingredientList.get(position).getQuantity();
-    }
-
-    public void updateQuantity(int position, int quantity) {
-        IngredientItem item = ingredientList.get(position);
-        item.setQuantity(quantity);
-        notifyItemChanged(position);
+        this.databaseReference = FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("ingredients");
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.ingredient_item, parent, false);
-        return new ViewHolder(view);
+    public IngredientViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.ingredient_item, parent, false);
+        return new IngredientViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        IngredientItem ingredientItem = ingredientList.get(position);
-        holder.textViewIngredientName.setText(ingredientItem.getIngredientName());
-        holder.editTextQuantity.setText(String.valueOf(ingredientItem.getQuantity()));
-        holder.editTextQuantity.setOnFocusChangeListener((v, hasFocus) -> {
-            if (!hasFocus) {
+    public void onBindViewHolder(@NonNull IngredientViewHolder holder, int position) {
+        IngredientItem ingredient = ingredientList.get(position);
+        holder.nameTextView.setText(ingredient.getName());
+        holder.quantityTextView.setText(ingredient.getQuantity());
+        holder.measurementTextView.setText(ingredient.getMeasurement());
 
-                int quantity = Integer.parseInt(holder.editTextQuantity.getText().toString());
-                updateQuantity(position, quantity);
+        holder.deleteButton.setOnClickListener(v -> {
+            String ingredientId = ingredient.getId();
+            if (ingredientId != null) {
+                databaseReference.child(ingredientId).removeValue();
             }
         });
     }
@@ -54,21 +55,18 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
         return ingredientList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView textViewIngredientName;
-        EditText editTextQuantity;
+    public static class IngredientViewHolder extends RecyclerView.ViewHolder {
+        TextView nameTextView;
+        TextView quantityTextView;
+        TextView measurementTextView;
+        Button deleteButton;
 
-        public ViewHolder(@NonNull View itemView) {
+        public IngredientViewHolder(@NonNull View itemView) {
             super(itemView);
-            textViewIngredientName = itemView.findViewById(R.id.textViewIngredientName);
-            editTextQuantity = itemView.findViewById(R.id.editTextQuantity);
+            nameTextView = itemView.findViewById(R.id.textViewIngredientName);
+            quantityTextView = itemView.findViewById(R.id.textViewQuantity);
+            measurementTextView = itemView.findViewById(R.id.textViewMeasurement);
+            deleteButton = itemView.findViewById(R.id.buttonDelete);
         }
     }
-
-    public void updateData(ArrayList<IngredientItem> newIngredientList) {
-        ingredientList.clear();
-        ingredientList.addAll(newIngredientList);
-        notifyDataSetChanged();
-    }
-
 }

@@ -12,10 +12,12 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true" />
 
-    <FrameLayout
+    <LinearLayout
+        android:id="@+id/ingredientDetailsLayout"
         android:layout_width="200dp"
         android:layout_height="150dp"
         android:gravity="center"
+        android:orientation="vertical"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true">
 
@@ -29,17 +31,37 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/editTextQuantity"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:hint="Quantity"
-            android:inputType="number"
-            android:layout_gravity="center"
-            android:padding="8dp"
-            android:textSize="16sp" />
+            android:orientation="horizontal"
+            android:gravity="center">
 
-    </FrameLayout>
+            <TextView
+                android:id="@+id/textViewQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="Quantity"
+                android:padding="8dp"
+                android:textSize="16sp" />
 
+            <TextView
+                android:id="@+id/textViewMeasurement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="Measurement"
+                android:padding="8dp"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:onClick="onDeleteIngredientClicked"
+            android:text="Delete" />
+    </LinearLayout>
 </RelativeLayout>

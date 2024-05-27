@@ -1,33 +1,28 @@
 package com.example.foodapplication;
 
-import android.util.Log;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Recipes
-{
-    List<Recipe> Recipes;
+public class Recipes {
+    private List<Recipe> recipeList;
 
-    public Recipes()
-    {
-        Recipes = new ArrayList<>();
+    public Recipes() {
+        this.recipeList = new ArrayList<>();
     }
 
-    public void AddRecipe(Recipe rec)
-    {
-        Recipes.add(rec);
+    public List<Recipe> getRecipeList() {
+        return recipeList;
     }
-    public int GetN(){return Recipes.size();}
 
-    public Recipe GetRecipe(int i) { return Recipes.get(i);}
-    public String GetName(int i)
-    {
-        return Recipes.get(i).GetRecipeName();
+    public void addRecipe(Recipe recipe) {
+        recipeList.add(recipe);
     }
-    public void Remove (int i)
-    {
-        Recipes.remove(i);
+
+    public Recipe getRecipe(int index) {
+        return recipeList.get(index);
+    }
+
+    public int size() {
+        return recipeList.size();
     }
 }
