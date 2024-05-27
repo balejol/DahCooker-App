@@ -38,19 +38,34 @@ public class SettingsActivity extends AppCompatActivity {
         }
 
         switch (item.getItemId()) {
+            // iš Settings į Main
             case R.id.item1:
                 Intent mainIntent = new Intent(SettingsActivity.this, MainActivity.class);
                 startActivity(mainIntent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
+            // iš Settings į Ingredients
             case R.id.item2:
-                Intent recipeIntent = new Intent(SettingsActivity.this, IngredientsActivity.class);
+                Intent ingredientsIntent = new Intent(SettingsActivity.this, IngredientsActivity.class);
+                startActivity(ingredientsIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                return true;
+            // iš Settings į Add recipe
+            case R.id.item3:
+                Intent recipeIntent = new Intent(SettingsActivity.this, AddRecipePage.class);
                 startActivity(recipeIntent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
-            case R.id.item3:
-                Intent settingsIntent = new Intent(SettingsActivity.this, AddRecipePage.class);
-                startActivity(settingsIntent);
+            // iš Settings į My recipes
+            case R.id.item4:
+                Intent myrecipeIntent = new Intent(SettingsActivity.this, RecipesPage.class);
+                startActivity(myrecipeIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                return true;
+            // iš Settings į Favourite recipes
+            case R.id.item5:
+                Intent favouriteIntent = new Intent(SettingsActivity.this, FavoriteRecipesPage.class);
+                startActivity(favouriteIntent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             default:
@@ -84,8 +99,6 @@ public class SettingsActivity extends AppCompatActivity {
 
         // Initialize MediaPlayer with your sound file
         mediaPlayer = MediaPlayer.create(this, R.raw.buttonclick);
-
-        Button backButton = findViewById(R.id.settBackButton); // Find the "recipeHistory" button by its ID
 
         // Initialize SharedPreferences
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -127,19 +140,6 @@ public class SettingsActivity extends AppCompatActivity {
                 }
             }
         });
-
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mediaPlayer != null) {
-                    mediaPlayer.start();
-                }
-                Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            }
-        });
-
     }
 
     @Override

@@ -66,17 +66,17 @@ public class EditRecipePage extends AppCompatActivity {
                 startActivity(ingredientsIntent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
-            case R.id.myRecipes:
+            case R.id.item3:
                 Intent myRecipesIntent = new Intent(EditRecipePage.this, RecipesPage.class);
                 startActivity(myRecipesIntent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
-            case R.id.favoriteRecipes:
+            case R.id.item4:
                 Intent favoriteRecipeIntent = new Intent (EditRecipePage.this, FavoriteRecipesPage.class);
                 startActivity(favoriteRecipeIntent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
-            case R.id.item3:
+            case R.id.item5:
                 Intent addRecipeIntent = new Intent(EditRecipePage.this, AddRecipePage.class);
                 startActivity(addRecipeIntent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);

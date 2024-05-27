@@ -6,10 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
+    
     <ScrollView
         android:id="@+id/main_page"
         android:layout_width="match_parent"
@@ -34,7 +31,7 @@
                     android:layout_height="800dp"
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="0dp"
-                    android:background="@drawable/_bg_photo"
+                    android:background="@drawable/_bg_mainactivity"
                     android:visibility="visible" />
 
                 <RelativeLayout
@@ -44,7 +41,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginStart="45dp"
-                    android:layout_marginTop="200dp"
+                    android:layout_marginTop="150dp"
                     android:layout_marginEnd="45dp"
                     android:gravity="center"
                     android:visibility="visible">
@@ -52,7 +49,7 @@
                     <View
                         android:id="@+id/login_box_green"
                         android:layout_width="400dp"
-                        android:layout_height="379dp"
+                        android:layout_height="345dp"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
                         android:background="@drawable/box_shape_yellow" />
@@ -84,7 +81,7 @@
                         android:layout_alignParentTop="true"
                         android:layout_alignParentEnd="true"
                         android:layout_marginStart="93dp"
-                        android:layout_marginTop="314dp"
+                        android:layout_marginTop="250dp"
                         android:layout_marginEnd="30dp">
 
                         <Button
@@ -107,7 +104,7 @@
                         android:layout_alignParentTop="true"
                         android:layout_alignParentEnd="true"
                         android:layout_marginStart="30dp"
-                        android:layout_marginTop="171dp"
+                        android:layout_marginTop="125dp"
                         android:layout_marginEnd="30dp">
                         <Button
                             android:id="@+id/ingredients"
@@ -123,13 +120,23 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:layout_gravity="center_horizontal|top"
-                        android:layout_marginTop="175dp"
+                        android:layout_marginTop="130dp"
                         android:gravity="center"
                         android:text="Ingredients"
                         android:textSize="25sp"
                         android:textStyle="bold" />
 
                 </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/user_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="95dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="User details"
+                    android:visibility="gone" />
 
             </RelativeLayout>
 
@@ -150,25 +157,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/user_details"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="680dp"
-        android:layout_marginEnd="10dp"
-        android:text="User details"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.019"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="300dp"
-        android:layout_marginTop="664dp"
+        android:layout_marginTop="555dp"
         android:text="Logout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
