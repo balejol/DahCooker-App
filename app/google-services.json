@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "319742761050-ojo0esdlke3ggf81h5g06p5ffrg8338a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.foodapplication",
+            "certificate_hash": "a2ee40bf3fada7335c1ee58d530c3769ccbd5d19"
+          }
+        },
+        {
           "client_id": "319742761050-dvdbbfkml8t2nvolggoqaam8drfo5eu8.apps.googleusercontent.com",
           "client_type": 3
         }
